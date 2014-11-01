@@ -30,8 +30,10 @@
  *
  * Digital
  * D = digital + number (1,2,3,…)
- * V = value + number (0,1)
- * Example: D2V1 (digital: 2, on)
+ *  S = switch + number (0,1)
+ *  or
+ *  F = flash + milliseconds (1000 = 1 sec)
+ * Example: D2S1 (digital: 2, on),  D4F100 (digital: 4, flash = every 100 millisec)
  *
  * Preset
  * P = preset + number(1,2,3,...)
@@ -62,10 +64,23 @@ int Analog2Pin = 3;
 int Analog1Value = 0;
 int Analog2Value = 0;
 
-int Digital1Pin = 12;
-int Digital2Pin = 13;
+int Digital1Pin = A0; // Red
+int Digital2Pin = A1; // Green
+int Digital3Pin = A2; // Blue
+int Digital4Pin = A3; // IR
 int Digital1Value = 0;
 int Digital2Value = 0;
+int Digital3Value = 0;
+int Digital4Value = 0;
+int Flash1 = LOW;
+long Flash1Time = 0;
+int Flash2 = LOW;
+long Flash2Time = 0;
+int Flash3 = LOW;
+long Flash3Time = 0;
+int Flash4 = LOW;
+long Flash4Time = 0;
+long FlashInterval = 100;
 
 char CommandTyp1;
 int Command1;
@@ -73,6 +88,8 @@ char CommandTyp2;
 int Command2;
 char CommandTyp3;
 int Command3;
+
+unsigned long CurrentTime = millis();
 
 void setup() 
 { 
@@ -92,12 +109,15 @@ void setup()
 
   pinMode(Digital1Pin, OUTPUT);
   pinMode(Digital2Pin, OUTPUT);
+  pinMode(Digital3Pin, OUTPUT);
+  pinMode(Digital4Pin, OUTPUT);
 } 
 
 
 void loop() 
 { 
   DataControl();
+  Flash();
   // Serial.println("open serial --->");
 }
 
@@ -141,6 +161,7 @@ void DataControl(){
         PresetSwitch();
       }
     }
+    Flash();
   }
 }
 
@@ -203,13 +224,74 @@ void AnalogSwitch(){
 /*************************************************************************************/
 // switching the digital ports
 void DigitalSwitch(){
-  if (Command1==1){
-    Digital1Value = Command2;
-    digitalWrite(Digital1Pin, Digital1Value);
+  if (CommandTyp2=='S'){ // Switch On or OFF
+    if (Command1==1){
+      digitalWrite(Digital1Pin, Command2);
+    }
+    if (Command1==2){
+      digitalWrite(Digital2Pin, Command2);
+    }
+    if (Command1==3){
+      digitalWrite(Digital3Pin, Command2);
+    }
+    if (Command1==4){
+      digitalWrite(Digital4Pin, Command2);
+    }
   }
-  else if (Command1==2){
-    Digital2Value = Command2;
-    digitalWrite(Digital2Pin, Digital2Value);
+  else if (CommandTyp2=='F'){
+    if (Command2==1){
+      if (Command1==1){
+        Flash1Time = millis();
+        Flash1 = HIGH;
+        digitalWrite(Digital1Pin, 1);
+      }
+      if (Command1==2){
+        Flash2Time = millis();
+        Flash2 = HIGH;
+        digitalWrite(Digital2Pin, 1);
+      }
+      if (Command1==3){
+        Flash3Time = millis();
+        Flash3 = HIGH;
+        digitalWrite(Digital3Pin, 1);
+      }
+      if (Command1==4){
+        Flash4Time = millis();
+        Flash4 = HIGH;
+        digitalWrite(Digital4Pin, 1);
+      } 
+
+    }
+  }
+}
+
+/*************************************************************************************/
+// flashing the digital pins
+
+void Flash(){
+  if (Flash1 == HIGH){
+    CurrentTime = millis();
+    if(CurrentTime - Flash1Time > FlashInterval) {
+      digitalWrite(Digital1Pin, 0);
+    }
+  }
+  if (Flash2 == HIGH){
+    CurrentTime = millis();
+    if(CurrentTime - Flash2Time > FlashInterval) {
+      digitalWrite(Digital2Pin, 0);
+    }
+  }
+  if (Flash1 == HIGH){
+    CurrentTime = millis();
+    if(CurrentTime - Flash3Time > FlashInterval) {
+      digitalWrite(Digital3Pin, 0);
+    }
+  }
+  if (Flash1 == HIGH){
+    CurrentTime = millis();
+    if(CurrentTime - Flash4Time > FlashInterval) {
+      digitalWrite(Digital4Pin, 0);
+    }
   }
 }
 
@@ -229,6 +311,10 @@ void PresetSwitch(){
     Analog2Value = 0;
     Digital1Value = LOW;
     Digital2Value = LOW;
+    digitalWrite(Digital1Pin, 0);
+    digitalWrite(Digital2Pin, 0);
+    digitalWrite(Digital3Pin, 0);
+    digitalWrite(Digital4Pin, 0);
   }
   else if (Command1==1){  // turn on everything
     Servo1Possition = 180;
@@ -243,6 +329,10 @@ void PresetSwitch(){
     Analog2Value = 255;
     Digital1Value = HIGH;
     Digital2Value = HIGH;
+    digitalWrite(Digital1Pin, 1);
+    digitalWrite(Digital2Pin, 1);
+    digitalWrite(Digital3Pin, 1);
+    digitalWrite(Digital4Pin, 1);
 
   }
   Servo1.write(Servo1Possition);
@@ -254,6 +344,10 @@ void PresetSwitch(){
   digitalWrite(Digital1Pin, Digital1Value);
   digitalWrite(Digital2Pin, Digital2Value);
 }
+
+
+
+
 
 
 
