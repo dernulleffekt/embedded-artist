@@ -1,58 +1,60 @@
-#N canvas 45 107 1231 689 10;
+#N canvas 143 56 1406 825 10;
 #X declare -lib mrpeach;
-#X obj 197 -1 import mrpeach;
-#X obj 191 568 udpsend;
-#X obj 191 603 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 316 -7 import mrpeach;
+#X obj 310 562 udpsend;
+#X obj 310 597 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 248 551 disconnect;
-#X obj 191 372 packOSC;
-#X msg 135 308 send /fader \$1;
-#X obj 135 143 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
+#X msg 367 545 disconnect;
+#X obj 310 366 packOSC;
+#X msg 254 302 send /fader \$1;
+#X obj 254 137 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 26 144 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7900 1;
-#X msg 26 308 send /control \$1;
-#X obj 176 75 knob 32 32 0 10 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 2300 1;
-#X obj 299 107 knob 32 32 0 10 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 1700 1;
-#X msg 176 169 send /rotationZ \$1;
-#X msg 299 201 send /rotationX \$1;
-#X msg 248 528 connect 192.168.1.4 9000;
-#X msg 28 381 send /control/p1 \$1;
-#X floatatom 29 344 5 0 0 0 - - -;
-#X obj 683 43 EACamera;
-#X obj 435 29 vsl 15 128 0 180 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1100 1;
-#X obj 615 23 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11800 1;
-#X obj 617 161 int;
-#X msg 248 503 connect 192.168.0.112 9000;
-#X obj 648 161 int;
-#X obj 647 21 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
-#X obj 479 19 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
-#X obj 476 172 int;
-#X obj 513 34 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12100 1;
-#X obj 512 172 int;
-#X obj 436 193 int;
-#X obj 613 220 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11800 1;
-#X obj 613 371 int;
-#X obj 642 215 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 482 113 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 643 365 int;
-#X msg 332 243 send /arduino S1P\$1;
-#X msg 431 271 send /arduino A2V\$1;
-#X msg 428 293 send /arduino A1V\$1;
-#X msg 429 316 send /arduino M1D0S\$1;
-#X msg 442 335 send /arduino M1D1S\$1;
-#X msg 427 356 send /arduino M2D0S\$1;
-#X msg 452 377 send /arduino M2D1S\$1;
-#X msg 429 402 send /arduinoP1;
-#X msg 542 426 send /arduinoP0;
+#X msg 486 288 send /control \$1;
+#X obj 295 69 knob 32 32 0 10 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 418 101 knob 32 32 0 10 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X msg 295 163 send /rotationZ \$1;
+#X msg 330 220 send /rotationX \$1;
+#X msg 367 522 connect 192.168.1.4 9000;
+#X msg 147 375 send /control/p1 \$1;
+#X floatatom 148 338 5 0 0 0 - - -;
+#X obj 802 37 EACamera;
+#X obj 554 23 vsl 15 128 0 180 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 734 17 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 736 155 int;
+#X msg 367 497 connect 192.168.0.112 9000;
+#X obj 767 155 int;
+#X obj 766 15 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 598 13 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 595 166 int;
+#X obj 632 28 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 631 166 int;
+#X obj 555 187 int;
+#X obj 732 214 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 732 365 int;
+#X obj 761 209 vsl 15 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 762 359 int;
+#X msg 551 226 send /arduino S1P\$1;
+#X msg 550 265 send /arduino A2V\$1;
+#X msg 547 287 send /arduino A1V\$1;
+#X msg 548 310 send /arduino M1D0S\$1;
+#X msg 561 329 send /arduino M1D1S\$1;
+#X msg 546 350 send /arduino M2D0S\$1;
+#X msg 571 371 send /arduino M2D1S\$1;
+#X msg 548 396 send /arduinoP1;
+#X msg 661 420 send /arduinoP0;
+#X obj -454 8 EAFostexMixTabPanel;
+#X obj 364 267 r packosc;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 1 0;
@@ -92,3 +94,4 @@
 #X connect 38 0 4 0;
 #X connect 39 0 4 0;
 #X connect 40 0 4 0;
+#X connect 42 0 4 0;

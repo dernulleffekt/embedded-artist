@@ -1,0 +1,140 @@
+#N canvas 2 22 1024 941 10;
+#X obj 311 311 image fostex.gif;
+#X obj 53 329 knob 24 24 0 127 0 0 empty knob1 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 101 329 knob 24 24 0 127 0 0 empty knob2 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 149 329 knob 24 24 0 127 0 0 empty knob3 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 55 447 vsl 22 128 0 127 0 0 empty fader1 empty 0 -9 0 10 -262144
+-1 -1 200 1;
+#X obj 103 447 vsl 22 128 0 127 0 0 empty fader2 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 151 447 vsl 22 128 0 127 0 0 empty fader3 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 197 447 vsl 22 128 0 127 0 0 empty fader4 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 244 447 vsl 22 128 0 127 0 0 empty fader5 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 291 447 vsl 22 128 0 127 0 0 empty fader6 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 337 447 vsl 22 128 0 127 0 0 empty fader7 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 383 447 vsl 22 128 0 127 0 0 empty fader8 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 460 446 vsl 22 128 0 127 0 0 empty fader0 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 196 329 knob 24 24 0 127 0 0 empty knob4 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 244 329 knob 24 24 0 127 0 0 empty knob5 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 291 329 knob 24 24 0 127 0 0 empty knob6 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 339 330 knob 24 24 0 127 0 0 empty knob7 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 386 331 knob 24 24 0 127 0 0 empty knob8 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 53 262 knob 24 24 0 127 0 0 empty knob9 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 102 262 knob 24 24 0 127 0 0 empty knob10 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 149 263 knob 24 24 0 127 0 0 empty knob11 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 197 263 knob 24 24 0 127 0 0 empty knob12 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 245 263 knob 24 24 0 127 0 0 empty knob13 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 292 264 knob 24 24 0 127 0 0 empty knob14 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 339 264 knob 24 24 0 127 0 0 empty knob15 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 387 265 knob 24 24 0 127 0 0 empty knob16 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 52 195 knob 24 24 0 127 0 0 empty knob17 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 101 196 knob 24 24 0 127 0 0 empty knob18 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 150 196 knob 24 24 0 127 0 0 empty knob19 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 197 196 knob 24 24 0 127 0 0 empty knob20 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 244 197 knob 24 24 0 127 0 0 empty knob21 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 292 197 knob 24 24 0 127 0 0 empty knob22 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 340 197 knob 24 24 0 127 0 0 empty knob23 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 387 198 knob 24 24 0 127 0 0 empty knob24 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 535 333 knob 24 24 0 127 0 0 empty knob25 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 52 126 knob 24 24 0 127 0 0 empty knob26 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 100 127 knob 24 24 0 127 0 0 empty knob27 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 149 129 knob 24 24 0 127 0 0 empty knob28 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 197 129 knob 24 24 0 127 0 0 empty knob29 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 245 129 knob 24 24 0 127 0 0 empty knob30 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 293 130 knob 24 24 0 127 0 0 empty knob31 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 341 130 knob 24 24 0 127 0 0 empty knob32 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 389 131 knob 24 24 0 127 0 0 empty knob33 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 444 131 knob 24 24 0 127 0 0 empty knob34 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 493 132 knob 24 24 0 127 0 0 empty knob35 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 487 332 knob 24 24 0 127 0 0 empty knob37 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 441 331 knob 24 24 0 127 0 0 empty knob36 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 441 266 knob 24 24 0 127 0 0 empty knob38 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 489 267 knob 24 24 0 127 0 0 empty knob39 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 443 199 knob 24 24 0 127 0 0 empty knob40 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 489 199 knob 24 24 0 127 0 0 empty knob41 empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 12 -44 EaFostexMixTab;
+#X obj 5 619 int;
+#X obj 322 621 int;
+#X obj 55 744 int;
+#X obj 182 628 int;
+#X obj 646 625 int;
+#X obj 685 307 int;
+#X obj 684 362 int;
+#X msg 646 647 send /arduino S1P\$1;
+#X msg 182 650 send /arduino A2V\$1;
+#X msg 54 767 send /arduino A1V\$1;
+#X msg 5 640 send /arduino M1D0S\$1;
+#X msg 685 330 send /arduino M1D1S\$1;
+#X msg 322 646 send /arduino M2D0S\$1;
+#X msg 684 385 send /arduino M2D1S\$1;
+#X obj 561 723 s packosc;
+#X connect 1 0 52 0;
+#X connect 2 0 53 0;
+#X connect 4 0 54 0;
+#X connect 5 0 55 0;
+#X connect 18 0 57 0;
+#X connect 19 0 58 0;
+#X connect 26 0 56 0;
+#X connect 52 0 62 0;
+#X connect 53 0 64 0;
+#X connect 54 0 61 0;
+#X connect 55 0 60 0;
+#X connect 56 0 59 0;
+#X connect 57 0 63 0;
+#X connect 58 0 65 0;
+#X connect 59 0 66 0;
+#X connect 60 0 66 0;
+#X connect 61 0 66 0;
+#X connect 62 0 66 0;
+#X connect 63 0 66 0;
+#X connect 64 0 66 0;
+#X connect 65 0 66 0;
+#X coords 0 -1 1 1 600 600 1 10 10;
