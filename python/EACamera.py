@@ -2,7 +2,7 @@ import picamera
 class EACamera:
 	def __init__(self):
 		self.camera = picamera.PiCamera()
-		self.camera.framerate = 30
+		self.camera.framerate = 25
 		# dont know if these are good starting values
 		self.x = 0
 		self.y = 0
