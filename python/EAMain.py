@@ -34,7 +34,7 @@ camera.setFrame(100,100,640,480)
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
 receive_address = EANet.get_interface_ip("eth0"), 9000
-
+print "OSC going to listen on %s" % receive_address[0]
 xloc = 1.0;
 yloc = 1.0;
 rotationX = 0.0
