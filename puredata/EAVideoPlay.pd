@@ -1,0 +1,38 @@
+#N canvas 375 410 513 367 10;
+#X msg 182 72 send /video/play /home/pi/videos/bilder.mp4;
+#X msg 56 216 send /video/stop;
+#X msg 58 243 send /video/pause;
+#X msg 154 277 send /video/faster;
+#X msg 11 273 send /video/slower;
+#X obj 85 328 outlet;
+#X obj 6 6 cnv 15 100 200 empty empty empty 20 12 0 14 -203904 -66577
+0;
+#X obj 71 15 vradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 182 47 select 0 1 2 3 4 5;
+#X text 38 14 Video 1;
+#X text 74 28 2;
+#X text 38 28 play;
+#X obj 11 61 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113 -1
+-1;
+#X obj 11 100 bng 15 250 50 0 empty empty empty 17 7 0 10 -262130 -1
+-1;
+#X text 28 59 stop;
+#X text 29 97 pause;
+#X obj 11 154 bng 15 250 50 0 empty empty ^ 4 10 1 16 -204800 -1 -1
+;
+#X obj 11 179 bng 15 250 50 0 empty empty v 5 7 1 12 -204800 -1 -1
+;
+#X text 29 165 speed;
+#X connect 0 0 5 0;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 0 0;
+#X connect 12 0 1 0;
+#X connect 13 0 2 0;
+#X connect 16 0 3 0;
+#X connect 17 0 4 0;
+#X coords 0 -1 1 1 102 202 2 5 5;
