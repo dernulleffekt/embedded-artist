@@ -1,6 +1,8 @@
+import pyomxplayer
 import picamera
 class EACamera:
 	def __init__(self):
+		self.omx = None
 		self.camera = picamera.PiCamera()
 		self.camera.framerate = 25
 		# dont know if these are good starting values
@@ -15,6 +17,10 @@ class EACamera:
 
 		self.effects = [ 
 		'none','negative','solarize','sketch','denoise','emboss','oilpaint','hatch','gpen','pastel','watercolor','film','blur','saturation','colorswap','washedout','posterise','colorpoint','colorbalance','cartoon','deinterlace1','deinterlace2']
+
+	def close(self):
+		if (self.omx != None):
+			self.omx.stop()
 
 	def start(self):
 		self.camera.start_preview()
@@ -90,4 +96,18 @@ class EACamera:
 	def setZoomH(self,h):
 		self.zoomH = h
 		self.camera.zoom = (self.zoomX,self.zoomY,self.zoomW,self.zoomH)
+	
+	# --- video player functions ---
+	def playVideo(self,videofile):
+		self.omx = pyomxplayer.OMXPlayer(videofile)
+	
+	def stopVideo(self):
+		self.omx.stop()
 
+	def pauseVideo(self):
+		self.omx.toggle_pause()
+	
+	def fasterVideo(self):
+		self.omx.set_faster()
+	def slowerVideo(self):
+		self.omx.set_slower()

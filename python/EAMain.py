@@ -178,6 +178,26 @@ def cameraSwitch_handler(addr, tags, stuff, source):
     else:
 	camera.stop()
 
+def videoPlay_handler(addr, tags, stuff, source):
+    global camera
+    camera.playVideo(stuff[0])		
+
+def videoPause_handler(addr, tags, stuff, source):
+    global camera
+    camera.pauseVideo()		
+
+def videoStop_handler(addr, tags, stuff, source):
+    global camera
+    camera.stopVideo()		
+
+def videoFaster_handler(addr, tags, stuff, source):
+    global camera
+    camera.fasterVideo()		
+
+def videoSlower_handler(addr, tags, stuff, source):
+    global camera
+    camera.slowerVideo()		
+
 s.addMsgHandler("/arduino", arduino_handler) # adding our function
 s.addMsgHandler("/print", printing_handler) # adding our function
 s.addMsgHandler("/control/p1", control_handler) # adding our function
@@ -205,6 +225,12 @@ s.addMsgHandler("/camera/hflip", cameraHFlip_handler) # adding our function
 s.addMsgHandler("/camera/vflip", cameraVFlip_handler) # adding our function
 s.addMsgHandler("/camera/fullscreen", cameraFullscreen_handler) # adding our function
 
+s.addMsgHandler("/video/play", videoPlay_handler) # adding our function
+s.addMsgHandler("/video/pause", videoPause_handler) # adding our function
+s.addMsgHandler("/video/stop", videoStop_handler) # adding our function
+s.addMsgHandler("/video/slower", videoSlower_handler) # adding our function
+s.addMsgHandler("/video/faster", videoFaster_handler) # adding our function
+
 # just checking which handlers we have added
 print "Registered Callback-functions are :"
 for addr in s.getOSCAddressSpace():
@@ -227,7 +253,7 @@ try :
 	#print yloc
 
 except KeyboardInterrupt :
-    #camera.stop()
+    camera.close()
     print "\nClosing OSCServer."
     s.close()
     print "Waiting for Server-thread to finish"
