@@ -32,7 +32,6 @@ mysphere.set_shader(shader)
 #mysphere.scale(0.000001,0.000001,0.000001);
 
 camera = EACamera()
-camera.start();
 camera.setAlpha(64)
 camera.setFrame(100,100,640,480)
 
@@ -180,11 +179,11 @@ def cameraZoomHeight_handler(addr, tags, stuff, source):
 def cameraSwitch_handler(addr, tags, stuff, source):
     global camera
     if bool(stuff[0]):
-	camera = EACamera()
+	#camera = EACamera()
 
 	camera.start();
-	camera.setAlpha(64)
-	camera.setFrame(100,100,640,480)
+	#camera.setAlpha(64)
+	#camera.setFrame(100,100,640,480)
     else:
 	camera.stop()
 
@@ -225,7 +224,7 @@ s.addMsgHandler("/camera/x", cameraX_handler) # adding our function
 s.addMsgHandler("/camera/y", cameraY_handler) # adding our function
 s.addMsgHandler("/camera/width", cameraWidth_handler) # adding our function
 s.addMsgHandler("/camera/height", cameraHeight_handler) # adding our function
-s.addMsgHandler("/camera/switch", cameraHeight_handler) # adding our function
+s.addMsgHandler("/camera/switch", cameraSwitch_handler) # adding our function
 
 s.addMsgHandler("/camera/zoomX", cameraZoomX_handler) # adding our function
 s.addMsgHandler("/camera/zoomY", cameraZoomY_handler) # adding our function
