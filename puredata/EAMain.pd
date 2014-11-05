@@ -1,4 +1,4 @@
-#N canvas 604 95 1406 825 10;
+#N canvas 270 22 1406 825 10;
 #X declare -lib mrpeach;
 #X obj 316 -7 import mrpeach;
 #X obj 310 562 udpsend;
@@ -8,14 +8,14 @@
 #X obj 310 366 packOSC;
 #X msg 270 281 send /fader \$1;
 #X obj 270 117 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6500 1;
 #X obj 482 113 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1900 1;
 #X msg 486 288 send /control \$1;
-#X obj 295 69 knob 32 32 0 10 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 0 1;
-#X obj 379 69 knob 32 32 0 10 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 310 1;
+#X obj 295 69 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 800 1;
+#X obj 434 170 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 2100 1;
 #X msg 295 163 send /rotationZ \$1;
 #X msg 330 220 send /rotationX \$1;
 #X msg 367 522 connect 192.168.1.4 9000;
@@ -57,6 +57,9 @@
 #X obj 374 281 r packosc;
 #X msg 359 455 connect 192.168.0.103 9000;
 #X obj 156 8 EAVideoPlay;
+#X obj 356 77 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X msg 306 173 send /rotationY \$1;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 1 0;
@@ -99,3 +102,5 @@
 #X connect 42 0 4 0;
 #X connect 43 0 1 0;
 #X connect 44 0 4 0;
+#X connect 45 0 46 0;
+#X connect 46 0 4 0;
