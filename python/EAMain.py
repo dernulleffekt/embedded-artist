@@ -19,12 +19,17 @@ import EANet
 # init the camera
 from EACamera import EACamera
 # setup 3d
-DISPLAY = pi3d.Display.create(w=800, h=600)
-shader = pi3d.Shader("uv_flat")
-sprite = pi3d.ImageSprite("camera.PNG", shader, w=10.0, h=10.0) # path relative to program dir
-#sprite = pi3d.Cuboid(3,3,3) # Sphere("earth", 0.0, 0.0, -10.0, 3.0, 24)
-
-
+DISPLAY = pi3d.Display.create(w=800, h=600,background = (0.2, 0.4, 0.6, 1))
+shader = pi3d.Shader("uv_light")
+#sprite = pi3d.ImageSprite("camera.PNG", shader, w=10.0, h=10.0) # path relative to program dir
+#sprite = pi3d.Cuboid(3.,3.,3.) # Sphere("earth", 0.0, 0.0, -10.0, 3.0, 24)
+#mysphere = pi3d.Sphere(radius=1, sides=24, slices=24, name="sphere",
+#        x=-4, y=2, z=10)
+#mysphere = pi3d.Model(file_string='../../pi3dDemos/models/cow2.obj', name='napf', x=0, y=-1, z=40,
+mysphere = pi3d.Model(file_string='cube2.obj', name='napf', x=0, y=-1, z=40,
+                sx=0.5, sy=0.5, sz=0.5)
+mysphere.set_shader(shader)
+#mysphere.scale(0.000001,0.000001,0.000001);
 
 camera = EACamera()
 camera.start();
@@ -38,6 +43,7 @@ print "OSC going to listen on %s" % receive_address[0]
 xloc = 1.0;
 yloc = 1.0;
 rotationX = 0.0
+rotationY = 0.0
 rotationZ = 0.0
 # OSC Server. there are three different types of server. 
 s = OSC.OSCServer(receive_address) # basic
@@ -96,6 +102,10 @@ def fader_handler(addr, tags, stuff, source):
 def rotationX_handler(addr, tags, stuff, source):
     global rotationX
     rotationX = float(stuff[0])	
+
+def rotationY_handler(addr, tags, stuff, source):
+    global rotationY
+    rotationY = float(stuff[0])	
 
 def rotationZ_handler(addr, tags, stuff, source):
     global rotationZ
@@ -203,6 +213,7 @@ s.addMsgHandler("/print", printing_handler) # adding our function
 s.addMsgHandler("/control/p1", control_handler) # adding our function
 s.addMsgHandler("/fader", fader_handler) # adding our function
 s.addMsgHandler("/rotationX", rotationX_handler) # adding our function
+s.addMsgHandler("/rotationY", rotationY_handler) # adding our function
 s.addMsgHandler("/rotationZ", rotationZ_handler) # adding our function
 s.addMsgHandler("/camera/alpha", cameraAlpha_handler) # adding our function
 s.addMsgHandler("/camera/effect", cameraEffect_handler) # adding our function
@@ -245,10 +256,12 @@ st.start()
 
 try :
     while DISPLAY.loop_running():
-  	sprite.draw()
-	sprite.rotateIncX(rotationX)
-	sprite.rotateIncZ(rotationZ)
-	sprite.position(xloc, yloc, 15.0)
+	DISPLAY.clear()
+  	mysphere.draw()
+	mysphere.rotateToX(rotationX)
+	mysphere.rotateToY(rotationY)
+	mysphere.rotateToZ(rotationZ)
+	mysphere.position(xloc, yloc, 15.0)
 	#print xloc
 	#print yloc
 
