@@ -18,22 +18,24 @@ import EANet
 
 # init the camera
 from EACamera import EACamera
+camera = EACamera()
+camera.setAlpha(64)
+camera.setFrame(100,100,640,480)
+
 # setup 3d
-DISPLAY = pi3d.Display.create(w=800, h=600,background = (0.2, 0.4, 0.6, 1))
+DISPLAY = pi3d.Display.create(w=800, h=600,background = (0.6, 0.6, 0.3, 1.))
+mylight = pi3d.Light(lightpos=(-2.0, -1.0, 10.0), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 0.3))
+
 shader = pi3d.Shader("uv_light")
 #sprite = pi3d.ImageSprite("camera.PNG", shader, w=10.0, h=10.0) # path relative to program dir
 #sprite = pi3d.Cuboid(3.,3.,3.) # Sphere("earth", 0.0, 0.0, -10.0, 3.0, 24)
 #mysphere = pi3d.Sphere(radius=1, sides=24, slices=24, name="sphere",
 #        x=-4, y=2, z=10)
 #mysphere = pi3d.Model(file_string='../../pi3dDemos/models/cow2.obj', name='napf', x=0, y=-1, z=40,
-mysphere = pi3d.Model(file_string='cube2.obj', name='napf', x=0, y=-1, z=40,
-                sx=0.5, sy=0.5, sz=0.5)
+mysphere = pi3d.Model(file_string='guteMiene.obj', name='napf', x=0, y=-1, z=-40,
+                sx=1.5, sy=1.5, sz=1.5)
 mysphere.set_shader(shader)
-#mysphere.scale(0.000001,0.000001,0.000001);
 
-camera = EACamera()
-camera.setAlpha(64)
-camera.setFrame(100,100,640,480)
 
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
@@ -179,11 +181,7 @@ def cameraZoomHeight_handler(addr, tags, stuff, source):
 def cameraSwitch_handler(addr, tags, stuff, source):
     global camera
     if bool(stuff[0]):
-	#camera = EACamera()
-
 	camera.start();
-	#camera.setAlpha(64)
-	#camera.setFrame(100,100,640,480)
     else:
 	camera.stop()
 
