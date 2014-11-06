@@ -1,26 +1,25 @@
-#N canvas 270 22 1406 825 10;
+#N canvas 197 130 1406 825 10;
 #X declare -lib mrpeach;
 #X obj 316 -7 import mrpeach;
 #X obj 310 562 udpsend;
-#X obj 310 597 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 310 597 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 367 545 disconnect;
 #X obj 310 366 packOSC;
 #X msg 270 281 send /fader \$1;
 #X obj 270 117 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6500 1;
+-1 -1 700 1;
 #X obj 482 113 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1900 1;
+-1 -1 0 1;
 #X msg 486 288 send /control \$1;
 #X obj 295 69 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 800 1;
+-1 -1 400 1;
 #X obj 434 170 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 2100 1;
+-1 -1 2000 1;
 #X msg 295 163 send /rotationZ \$1;
 #X msg 330 220 send /rotationX \$1;
-#X msg 367 522 connect 192.168.1.4 9000;
-#X msg 147 375 send /control/p1 \$1;
-#X floatatom 148 338 5 0 0 0 - - -;
+#X msg 384 417 send /control/p1 \$1;
+#X floatatom 385 380 5 0 0 0 - - -;
 #X obj 794 8 EACamera;
 #X obj 554 23 vsl 15 128 0 180 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
@@ -58,8 +57,9 @@
 #X msg 359 455 connect 192.168.0.103 9000;
 #X obj 156 8 EAVideoPlay;
 #X obj 356 77 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 2400 1;
 #X msg 306 173 send /rotationY \$1;
+#X msg 368 521 connect 192.168.1.114 9000;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 1 0;
@@ -71,25 +71,25 @@
 #X connect 10 0 12 0;
 #X connect 11 0 4 0;
 #X connect 12 0 4 0;
-#X connect 13 0 1 0;
-#X connect 14 0 4 0;
-#X connect 15 0 14 0;
-#X connect 16 0 4 0;
-#X connect 17 0 27 0;
-#X connect 18 0 19 0;
-#X connect 19 0 35 0;
-#X connect 20 0 1 0;
-#X connect 21 0 37 0;
-#X connect 22 0 21 0;
-#X connect 23 0 24 0;
-#X connect 24 0 34 0;
-#X connect 25 0 26 0;
-#X connect 26 0 33 0;
-#X connect 27 0 32 0;
-#X connect 28 0 29 0;
-#X connect 29 0 36 0;
-#X connect 30 0 31 0;
-#X connect 31 0 38 0;
+#X connect 13 0 4 0;
+#X connect 14 0 13 0;
+#X connect 15 0 4 0;
+#X connect 16 0 26 0;
+#X connect 17 0 18 0;
+#X connect 18 0 34 0;
+#X connect 19 0 1 0;
+#X connect 20 0 36 0;
+#X connect 21 0 20 0;
+#X connect 22 0 23 0;
+#X connect 23 0 33 0;
+#X connect 24 0 25 0;
+#X connect 25 0 32 0;
+#X connect 26 0 31 0;
+#X connect 27 0 28 0;
+#X connect 28 0 35 0;
+#X connect 29 0 30 0;
+#X connect 30 0 37 0;
+#X connect 31 0 4 0;
 #X connect 32 0 4 0;
 #X connect 33 0 4 0;
 #X connect 34 0 4 0;
@@ -98,9 +98,9 @@
 #X connect 37 0 4 0;
 #X connect 38 0 4 0;
 #X connect 39 0 4 0;
-#X connect 40 0 4 0;
-#X connect 42 0 4 0;
-#X connect 43 0 1 0;
-#X connect 44 0 4 0;
-#X connect 45 0 46 0;
-#X connect 46 0 4 0;
+#X connect 41 0 4 0;
+#X connect 42 0 1 0;
+#X connect 43 0 4 0;
+#X connect 44 0 45 0;
+#X connect 45 0 4 0;
+#X connect 46 0 1 0;
