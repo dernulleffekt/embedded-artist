@@ -273,24 +273,28 @@ void Flash(){
     CurrentTime = millis();
     if(CurrentTime - Flash1Time > FlashInterval) {
       digitalWrite(Digital1Pin, 0);
+      Flash1 = LOW;
     }
   }
   if (Flash2 == HIGH){
     CurrentTime = millis();
     if(CurrentTime - Flash2Time > FlashInterval) {
       digitalWrite(Digital2Pin, 0);
+      Flash2 = LOW;
     }
   }
-  if (Flash1 == HIGH){
+  if (Flash3 == HIGH){
     CurrentTime = millis();
     if(CurrentTime - Flash3Time > FlashInterval) {
       digitalWrite(Digital3Pin, 0);
+      Flash3 = LOW;
     }
   }
-  if (Flash1 == HIGH){
+  if (Flash4 == HIGH){
     CurrentTime = millis();
     if(CurrentTime - Flash4Time > FlashInterval) {
       digitalWrite(Digital4Pin, 0);
+      Flash4 = LOW;
     }
   }
 }
