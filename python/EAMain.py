@@ -23,7 +23,7 @@ camera.setAlpha(64)
 camera.setFrame(100,100,640,480)
 
 # setup 3d
-DISPLAY = pi3d.Display.create(w=800, h=600,background = (0.6, 0.6, 0.3, 1.))
+DISPLAY = pi3d.Display.create(background = (0.0, 0.0, 0.0, 1.))
 mylight = pi3d.Light(lightpos=(-2.0, -1.0, 10.0), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 0.3))
 
 shader = pi3d.Shader("uv_light")
@@ -32,10 +32,20 @@ shader = pi3d.Shader("uv_light")
 #mysphere = pi3d.Sphere(radius=1, sides=24, slices=24, name="sphere",
 #        x=-4, y=2, z=10)
 #mysphere = pi3d.Model(file_string='../../pi3dDemos/models/cow2.obj', name='napf', x=0, y=-1, z=40,
-mysphere = pi3d.Model(file_string='guteMiene.obj', name='napf', x=0, y=-1, z=-40,
-                sx=1.5, sy=1.5, sz=1.5)
-mysphere.set_shader(shader)
+objects = []
 
+mysphere = pi3d.Model(file_string='dorn.obj', name='napf', x=0, y=-1, z=-40,
+                sx=2., sy=2., sz=2.)
+mysphere.set_shader(shader)
+objects.append(mysphere)
+count = 15
+for i in range(count):
+	clony=mysphere.clone()
+	clony.position(i,-1,-40)
+	objects.append(clony)
+
+#mysphere.reparentTo(anchor)
+#clony.reparentTo(mysphere)
 
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
@@ -89,28 +99,45 @@ def control_handler(addr, tags, stuff, source):
     print "received new osc msg %s" % stuff
     global xloc
     xloc = float(stuff[0])
-    print xloc
-    print "---x"
+    #print xloc
+    #print "---x"
+    for o in objects:	
+		o.position(xloc, yloc, 15.0)
 
 # define a message-handler function for the server to call.
 def fader_handler(addr, tags, stuff, source):
     print stuff
     global yloc
     yloc = float(stuff[0])	
-    print yloc
-    print "---y"
+    #print yloc
+    for o in objects:	
+		o.position(xloc, yloc, 15.0)
+	
+    #print "---y"
 
 def rotationX_handler(addr, tags, stuff, source):
     global rotationX
     rotationX = float(stuff[0])	
-
+    i = 1
+    for o in objects:	
+	  	o.rotateIncX((rotationX*i)*0.001)
+		i = i + 1
 def rotationY_handler(addr, tags, stuff, source):
     global rotationY
-    rotationY = float(stuff[0])	
+    rotationY = float(stuff[0])
+    i = 1;	
+    for o in objects:	
+	  	o.rotateIncY((rotationY*i)*0.0012)
+		i = i + 1
 
 def rotationZ_handler(addr, tags, stuff, source):
     global rotationZ
     rotationZ = float(stuff[0])	
+    i = 1;	
+    for o in objects:	
+		o.rotateIncZ((rotationZ*i)*0.00132)
+		i = i + 1
+
 
 def cameraAlpha_handler(addr, tags, stuff, source):
     global camera
@@ -254,11 +281,20 @@ st.start()
 try :
     while DISPLAY.loop_running():
 	DISPLAY.clear()
-  	mysphere.draw()
-	mysphere.rotateToX(rotationX)
-	mysphere.rotateToY(rotationY)
-	mysphere.rotateToZ(rotationZ)
-	mysphere.position(xloc, yloc, 15.0)
+	i = 1
+  	for o in objects:	
+		o.draw()
+	  	o.rotateIncX((rotationX+i)*0.01)
+		o.rotateIncY((rotationY+i)*0.12)
+		o.rotateIncZ((rotationZ-i)*0.02)
+		#o.position(xloc, yloc, 15.0)
+		i = i + 1
+	
+  	#clony.draw()
+	#clony.rotateToX(rotationX)
+	#clony.rotateToY(rotationY)
+	#clony.rotateToZ(rotationZ)
+	#clony.position(xloc + 4., yloc, 15.0)
 	#print xloc
 	#print yloc
 
