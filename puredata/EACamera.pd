@@ -1,23 +1,23 @@
-#N canvas 182 61 1087 809 10;
-#X obj 578 482 popup 124 25 #ffffff effect none negative solarize sketch
+#N canvas 362 72 1087 809 10;
+#X obj 419 426 popup 124 25 #ffffff effect none negative solarize sketch
 denoise emboss oilpaint hatch gpen pastel watercolor film blur saturation
 colorswap washedout posterise colorpoint colorbalance cartoon deinterlace1
 deinterlace2;
-#X msg 658 30 options none negative solarize sketch denoise emboss
+#X msg 650 30 options none negative solarize sketch denoise emboss
 oilpaint hatch gpen pastel watercolor film blur saturation colorswap
 washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 ;
-#X obj 602 6 loadbang;
-#X obj 265 670 tabwrite \$0-cameramemory;
-#X msg 265 611 \$1 0;
-#X obj 265 638 unpack;
-#X obj 611 777 outlet;
-#X obj 598 104 cnv 15 100 80 empty empty storage 20 12 1 10 -261682
+#X obj 594 6 loadbang;
+#X obj 257 670 tabwrite \$0-cameramemory;
+#X msg 257 611 \$1 0;
+#X obj 257 638 unpack;
+#X obj 603 777 outlet;
+#X obj 502 106 cnv 15 100 80 empty empty storage 20 12 1 10 -261682
 -66577 0;
-#X floatatom 635 125 5 0 127 0 - - -;
-#X obj 608 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+#X floatatom 539 127 5 0 127 0 - - -;
+#X obj 512 128 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1
 -1;
-#X obj 676 127 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113
+#X obj 580 129 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113
 -1 -1;
 #N canvas 1006 381 538 443 storagesystem 0;
 #X obj 106 58 i 0;
@@ -72,140 +72,145 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 21 0 2 1;
 #X connect 22 2 9 0;
 #X connect 23 0 7 1;
-#X restore 712 198 pd storagesystem;
-#X obj 588 224 cnv 15 100 250 empty empty camera_settings 20 12 1 10
+#X restore 704 198 pd storagesystem;
+#X obj 502 195 cnv 15 100 250 empty empty camera_settings 20 12 1 10
 -233017 -66577 0;
-#X obj 618 249 vsl 10 200 -100 100 0 0 empty empty empty 0 -9 0 10
--262144 -1 -1 6350 1;
-#X msg 715 356 0;
-#X obj 606 249 vsl 10 200 -100 100 0 0 empty empty empty 0 -9 0 10
--262144 -1 -1 3200 1;
-#X obj 593 249 vsl 10 200 -100 100 0 0 empty empty empty 0 -9 0 10
--262144 -1 -1 6100 1;
-#X msg 66 697 /camera/shutter \$1;
-#X msg 142 658 /camera/effect \$1;
-#X msg 176 559 /camera/sharpness \$1;
-#X msg 27 578 /camera/saturation \$1;
-#X obj 676 161 bng 15 250 50 0 empty empty empty 0 -6 0 8 -261234 -1
+#X obj 538 215 vsl 10 200 -100 100 0 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X msg 707 356 0;
+#X obj 526 215 vsl 10 200 -100 100 0 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 513 215 vsl 10 200 -100 100 0 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X msg 58 697 /camera/shutter \$1;
+#X msg 134 658 /camera/effect \$1;
+#X msg 168 559 /camera/sharpness \$1;
+#X msg 19 578 /camera/saturation \$1;
+#X obj 580 163 bng 15 250 50 0 empty empty empty 0 -6 0 8 -261234 -1
 -1;
-#X obj 909 187 savepanel;
-#X msg 909 210 \; \$0-cameramemory write \$1;
-#X obj 608 161 bng 15 250 50 0 empty empty empty 0 -6 0 8 -204786 -1
+#X obj 901 187 savepanel;
+#X msg 901 210 \; \$0-cameramemory write \$1;
+#X obj 512 163 bng 15 250 50 0 empty empty empty 0 -6 0 8 -204786 -1
 -1;
-#X obj 909 245 openpanel;
-#X msg 909 268 \; \$0-cameramemory read \$1;
-#X obj 619 456 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+#X obj 901 245 openpanel;
+#X msg 901 268 \; \$0-cameramemory read \$1;
+#X obj 551 402 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
 -1;
-#X text 623 160 < file >;
-#X text 623 455 A utomatic;
-#X obj 274 105 cnv 15 300 400 empty empty preview 20 0 1 10 -204800
+#X text 527 162 < file >;
+#X obj 266 105 cnv 15 230 340 empty empty preview 20 0 1 10 -204800
 -66577 0;
-#X obj 285 121 grid position 200 0 1990 200 0 1990 1 1 1 10 10 822
-41;
-#X floatatom 285 324 5 0 3000 0 - - -;
-#X floatatom 478 324 5 -100 3000 0 - - -;
-#X msg 416 619 /camera/x \$1;
-#X msg 489 647 /camera/y \$1;
-#X obj 490 302 expr 1930 - $f1;
-#X floatatom 307 369 5 0 3000 0 - - -;
-#X floatatom 345 370 5 -100 3000 0 - - -;
-#X msg 611 628 /camera/width \$1;
-#X msg 731 631 /camera/height \$1;
-#X obj 498 132 vsl 10 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7700 1;
-#X msg 732 452 send /camera/alpha \$1;
-#X obj 732 403 int;
-#X obj 66 674 int;
-#X obj 164 534 int;
-#X obj 27 546 int;
-#X text 594 292 s s s;
-#X text 594 322 t a u;
-#X text 595 309 a h h;
-#X obj 521 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 521 153 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X text 524 130 horz flip;
-#X text 523 152 vert flip;
-#X obj 521 202 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X text 523 202 fullscreen;
-#X obj 714 476 int;
-#X msg 715 500 send /camera/fullscreen \$1;
-#X obj 748 530 int;
-#X msg 749 555 send /camera/hflip \$1;
-#X obj 755 578 int;
-#X msg 756 603 send /camera/vflip \$1;
-#X obj 401 331 vsl 10 128 0 0.98 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12400 1;
-#X obj 417 331 vsl 10 128 0 0.98 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2600 1;
-#X obj 434 331 vsl 10 128 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9600 1;
-#X obj 452 331 vsl 10 128 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10900 1;
-#X msg 729 655 /camera/zoomX \$1;
-#X msg 739 678 /camera/zoomY \$1;
-#X msg 757 704 /camera/zoomW \$1;
-#X msg 772 726 /camera/zoomH \$1;
-#X floatatom 388 471 5 0 0 0 - - -;
-#X floatatom 430 472 5 0 0 0 - - -;
-#X floatatom 472 474 5 0 0 0 - - -;
-#X floatatom 514 475 5 0 0 0 - - -;
-#X obj 598 200 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X text 616 199 start;
-#X obj 772 362 int;
-#X msg 772 384 send /camera/switch \$1;
-#X msg 578 69 name effect;
-#X msg 766 427 \$1 1;
-#X msg 317 613 \$1 2;
-#X msg 355 613 \$1 3;
-#X obj 768 244 t b f;
-#X obj 725 278 i;
-#X obj 774 297 pack;
-#X msg 365 638 \$1 4;
-#X msg 403 638 \$1 5;
-#X msg 435 638 \$1 6;
-#X msg 116 606 \$1 7;
-#X msg 164 605 \$1 8;
-#X msg 208 606 \$1 9;
-#X obj 655 110 bng 10 250 50 0 empty empty + 2 4 1 12 -262144 -1 -1
+#X obj 277 121 grid position 160 0 1990 90 0 1990 1 1 1 10 10 -3 264
 ;
-#X obj 681 110 bng 10 250 50 0 empty empty - 3 4 1 12 -262144 -1 -1
+#X floatatom 277 212 5 0 3000 0 - - -;
+#X floatatom 405 212 5 -100 3000 0 - - -;
+#X msg 408 619 /camera/x \$1;
+#X msg 481 647 /camera/y \$1;
+#X obj 308 212 expr 1930 - $f1;
+#X floatatom 298 232 5 0 3000 0 - - -;
+#X floatatom 373 232 5 -100 3000 0 - - -;
+#X msg 603 628 /camera/width \$1;
+#X msg 723 631 /camera/height \$1;
+#X obj 446 122 vsl 10 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 9100 1;
+#X msg 724 452 send /camera/alpha \$1;
+#X obj 724 403 int;
+#X obj 58 674 int;
+#X obj 156 534 int;
+#X obj 19 546 int;
+#X text 514 258 s s s;
+#X text 525 306 t a u;
+#X text 515 275 a h h;
+#X obj 423 274 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 423 297 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 426 274 horz flip;
+#X text 425 296 vert flip;
+#X obj 423 346 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 425 346 fullscreen;
+#X obj 706 476 int;
+#X msg 707 500 send /camera/fullscreen \$1;
+#X obj 740 530 int;
+#X msg 741 555 send /camera/hflip \$1;
+#X obj 747 578 int;
+#X msg 748 603 send /camera/vflip \$1;
+#X obj 278 275 vsl 10 128 0 0.98 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 313 275 vsl 10 128 0 0.98 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 347 275 vsl 10 128 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 382 276 vsl 10 128 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X msg 721 655 /camera/zoomX \$1;
+#X msg 731 678 /camera/zoomY \$1;
+#X msg 749 704 /camera/zoomW \$1;
+#X msg 764 726 /camera/zoomH \$1;
+#X floatatom 278 411 5 0 0 0 - - -;
+#X floatatom 313 411 5 0 0 0 - - -;
+#X floatatom 347 411 5 0 0 0 - - -;
+#X floatatom 381 411 5 0 0 0 - - -;
+#X obj 458 377 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
+1;
+#X text 423 377 start;
+#X obj 764 362 int;
+#X msg 764 384 send /camera/switch \$1;
+#X msg 570 69 name effect;
+#X msg 758 427 \$1 1;
+#X msg 309 613 \$1 2;
+#X msg 347 613 \$1 3;
+#X obj 760 244 t b f;
+#X obj 717 278 i;
+#X obj 766 297 pack;
+#X msg 357 638 \$1 4;
+#X msg 395 638 \$1 5;
+#X msg 427 638 \$1 6;
+#X msg 108 606 \$1 7;
+#X msg 156 605 \$1 8;
+#X msg 200 606 \$1 9;
+#X obj 559 112 bng 10 250 50 0 empty empty + 2 4 1 12 -262144 -1 -1
 ;
-#X obj 714 131 i;
-#X obj 743 131 i;
-#X obj 743 155 - 1;
-#X obj 714 155 + 1;
-#X floatatom 899 316 5 0 0 0 - - -;
-#X floatatom 861 316 5 0 0 0 - - -;
-#X msg 774 323 values \$1 \$2;
-#X obj 806 275 expr 1930 - $f1;
-#X text 315 351 scale;
-#X obj 710 219 route 0 1 2 3 4 5 6 7 8 9 10 11;
-#X msg 517 610 \$1 10;
-#X msg 565 610 \$1 11;
-#X text 493 267 alpha;
-#X obj 85 483 table \$0-cameramemory 2048;
+#X obj 585 112 bng 10 250 50 0 empty empty - 3 4 1 12 -262144 -1 -1
+;
+#X obj 706 131 i;
+#X obj 735 131 i;
+#X obj 735 155 - 1;
+#X obj 706 155 + 1;
+#X floatatom 891 316 5 0 0 0 - - -;
+#X floatatom 853 316 5 0 0 0 - - -;
+#X msg 766 323 values \$1 \$2;
+#X obj 798 275 expr 1930 - $f1;
+#X text 333 233 scale;
+#X obj 702 219 route 0 1 2 3 4 5 6 7 8 9 10 11;
+#X msg 509 610 \$1 10;
+#X msg 557 610 \$1 11;
+#X text 448 176 alpha;
+#X obj 77 483 table \$0-cameramemory 2048;
+#X text 317 256 distort;
+#X text 555 401 A uto;
+#X text 300 394 >;
+#X text 267 394 >;
+#X text 357 266 <;
+#X text 393 265 <;
 #X connect 0 0 18 0;
 #X connect 0 0 4 0;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
-#X connect 2 0 78 0;
+#X connect 2 0 77 0;
 #X connect 4 0 5 0;
 #X connect 5 0 3 0;
 #X connect 5 1 3 1;
 #X connect 8 0 11 2;
+#X connect 8 0 92 1;
 #X connect 8 0 93 1;
-#X connect 8 0 94 1;
 #X connect 9 0 11 0;
 #X connect 10 0 11 1;
-#X connect 11 0 102 0;
-#X connect 13 0 44 0;
+#X connect 11 0 101 0;
+#X connect 13 0 43 0;
 #X connect 14 0 13 0;
-#X connect 15 0 45 0;
-#X connect 16 0 46 0;
+#X connect 15 0 44 0;
+#X connect 16 0 45 0;
 #X connect 17 0 6 0;
 #X connect 18 0 6 0;
 #X connect 19 0 6 0;
@@ -215,94 +220,94 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 24 0 25 0;
 #X connect 25 0 26 0;
 #X connect 27 0 14 0;
-#X connect 31 0 32 0;
-#X connect 31 1 36 0;
+#X connect 30 0 31 0;
+#X connect 30 1 35 0;
+#X connect 31 0 33 0;
+#X connect 31 0 79 0;
 #X connect 32 0 34 0;
 #X connect 32 0 80 0;
-#X connect 33 0 35 0;
-#X connect 33 0 81 0;
+#X connect 33 0 6 0;
 #X connect 34 0 6 0;
-#X connect 35 0 6 0;
-#X connect 36 0 33 0;
+#X connect 35 0 32 0;
+#X connect 36 0 38 0;
+#X connect 36 0 102 0;
 #X connect 37 0 39 0;
 #X connect 37 0 103 0;
-#X connect 38 0 40 0;
-#X connect 38 0 104 0;
+#X connect 38 0 6 0;
 #X connect 39 0 6 0;
-#X connect 40 0 6 0;
-#X connect 41 0 43 0;
-#X connect 42 0 6 0;
-#X connect 43 0 42 0;
-#X connect 43 0 79 0;
-#X connect 44 0 17 0;
-#X connect 44 0 90 0;
-#X connect 45 0 19 0;
-#X connect 45 0 89 0;
-#X connect 46 0 20 0;
-#X connect 46 0 88 0;
-#X connect 50 0 58 0;
-#X connect 51 0 60 0;
-#X connect 54 0 56 0;
-#X connect 56 0 57 0;
-#X connect 56 0 87 0;
-#X connect 57 0 6 0;
-#X connect 58 0 59 0;
-#X connect 58 0 85 0;
-#X connect 59 0 6 0;
-#X connect 60 0 61 0;
-#X connect 60 0 86 0;
-#X connect 61 0 6 0;
+#X connect 40 0 42 0;
+#X connect 41 0 6 0;
+#X connect 42 0 41 0;
+#X connect 42 0 78 0;
+#X connect 43 0 17 0;
+#X connect 43 0 89 0;
+#X connect 44 0 19 0;
+#X connect 44 0 88 0;
+#X connect 45 0 20 0;
+#X connect 45 0 87 0;
+#X connect 49 0 57 0;
+#X connect 50 0 59 0;
+#X connect 53 0 55 0;
+#X connect 55 0 56 0;
+#X connect 55 0 86 0;
+#X connect 56 0 6 0;
+#X connect 57 0 58 0;
+#X connect 57 0 84 0;
+#X connect 58 0 6 0;
+#X connect 59 0 60 0;
+#X connect 59 0 85 0;
+#X connect 60 0 6 0;
+#X connect 61 0 69 0;
 #X connect 62 0 70 0;
 #X connect 63 0 71 0;
 #X connect 64 0 72 0;
-#X connect 65 0 73 0;
+#X connect 65 0 6 0;
 #X connect 66 0 6 0;
 #X connect 67 0 6 0;
 #X connect 68 0 6 0;
-#X connect 69 0 6 0;
+#X connect 69 0 65 0;
 #X connect 70 0 66 0;
 #X connect 71 0 67 0;
 #X connect 72 0 68 0;
-#X connect 73 0 69 0;
-#X connect 74 0 76 0;
-#X connect 76 0 77 0;
-#X connect 77 0 6 0;
-#X connect 78 0 0 0;
+#X connect 73 0 75 0;
+#X connect 75 0 76 0;
+#X connect 76 0 6 0;
+#X connect 77 0 0 0;
+#X connect 78 0 5 0;
 #X connect 79 0 5 0;
 #X connect 80 0 5 0;
-#X connect 81 0 5 0;
+#X connect 81 0 82 0;
+#X connect 81 1 96 0;
+#X connect 81 1 99 0;
 #X connect 82 0 83 0;
-#X connect 82 1 97 0;
-#X connect 82 1 100 0;
-#X connect 83 0 84 0;
+#X connect 82 0 97 0;
 #X connect 83 0 98 0;
-#X connect 84 0 99 0;
+#X connect 84 0 5 0;
 #X connect 85 0 5 0;
 #X connect 86 0 5 0;
 #X connect 87 0 5 0;
 #X connect 88 0 5 0;
 #X connect 89 0 5 0;
-#X connect 90 0 5 0;
+#X connect 90 0 92 0;
 #X connect 91 0 93 0;
-#X connect 92 0 94 0;
-#X connect 93 0 96 0;
-#X connect 94 0 95 0;
+#X connect 92 0 95 0;
+#X connect 93 0 94 0;
+#X connect 94 0 8 0;
 #X connect 95 0 8 0;
-#X connect 96 0 8 0;
-#X connect 99 0 31 0;
-#X connect 100 0 84 1;
-#X connect 102 0 0 0;
-#X connect 102 1 41 0;
-#X connect 102 2 83 1;
-#X connect 102 3 82 0;
-#X connect 102 4 50 0;
-#X connect 102 5 51 0;
-#X connect 102 6 54 0;
-#X connect 102 7 16 0;
-#X connect 102 8 15 0;
-#X connect 102 9 13 0;
-#X connect 102 10 37 0;
-#X connect 102 11 38 0;
+#X connect 98 0 30 0;
+#X connect 99 0 83 1;
+#X connect 101 0 0 0;
+#X connect 101 1 40 0;
+#X connect 101 2 82 1;
+#X connect 101 3 81 0;
+#X connect 101 4 49 0;
+#X connect 101 5 50 0;
+#X connect 101 6 53 0;
+#X connect 101 7 16 0;
+#X connect 101 8 15 0;
+#X connect 101 9 13 0;
+#X connect 101 10 36 0;
+#X connect 101 11 37 0;
+#X connect 102 0 5 0;
 #X connect 103 0 5 0;
-#X connect 104 0 5 0;
-#X coords 0 -1 1 1 450 410 2 260 100;
+#X coords 0 -1 1 1 350 360 2 260 100;
