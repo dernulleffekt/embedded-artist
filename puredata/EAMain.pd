@@ -1,4 +1,4 @@
-#N canvas 73 96 1354 820 10;
+#N canvas 1 59 1265 740 10;
 #X declare -lib mrpeach;
 #X obj -618 670 import mrpeach;
 #X obj -500 729 udpsend;
@@ -8,7 +8,7 @@
 #X obj -41 237 EACamera;
 #X obj -661 2 EAFostexMixTabPanel;
 #X obj -41 3 EAVideoPlay;
-#N canvas 171 207 564 578 geruempel 0;
+#N canvas 346 84 564 578 geruempel 0;
 #X obj 61 427 packOSC;
 #X msg 22 251 send /fader \$1;
 #X obj 22 87 vsl 15 128 0 10 0 0 empty empty empty 0 -9 0 10 -262144
@@ -55,9 +55,12 @@
 #X msg 300 366 send /arduinoP1;
 #X msg 413 390 send /arduinoP0;
 #X obj 126 251 r packosc;
-#X obj 108 47 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 0 1;
+#X obj 109 44 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 3100 1;
 #X msg 51 154 send /rotationY \$1;
+#X obj 82 469 s osc1;
+#X obj 144 483 s osc2;
+#X obj 169 447 s osc3;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
@@ -94,6 +97,9 @@
 #X connect 34 0 0 0;
 #X connect 35 0 36 0;
 #X connect 36 0 0 0;
+#X connect 36 0 37 0;
+#X connect 36 0 38 0;
+#X connect 36 0 39 0;
 #X restore -618 717 pd geruempel;
 #X obj 67 3 EAVideoPlay;
 #X obj 176 3 EAVideoPlay;
@@ -109,18 +115,15 @@
 #X obj 328 361 s osc2;
 #X obj 328 744 s osc3;
 #X obj -262 729 udpsend;
-#X obj -262 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
+#X obj -262 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
 1;
 #X msg -201 708 disconnect;
 #X obj -262 705 packOSC;
-#X msg -201 684 connect 192.168.0.112 9000;
 #X obj -10 729 udpsend;
-#X obj -10 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
+#X obj -10 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1 1
 ;
 #X msg 51 708 disconnect;
 #X obj -10 705 packOSC;
-#X msg -439 684 connect 192.168.0.111 9000;
-#X msg 51 684 connect 192.168.0.113 9000;
 #X obj -262 685 r osc2;
 #X obj -10 685 r osc3;
 #X obj 328 1 EACamera;
@@ -131,6 +134,9 @@
 #X text -344 624 1 2 3;
 #X text -372 637 LED On:;
 #X text -344 651 q w e;
+#X msg -439 684 connect 192.168.0.106 9000;
+#X msg -200 683 connect 192.168.0.107 9000;
+#X msg 48 684 connect 192.168.0.108 9000;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 15 0;
@@ -142,13 +148,13 @@
 #X connect 21 0 22 0;
 #X connect 23 0 21 0;
 #X connect 24 0 21 0;
-#X connect 25 0 21 0;
-#X connect 26 0 27 0;
-#X connect 28 0 26 0;
-#X connect 29 0 26 0;
-#X connect 30 0 1 0;
-#X connect 31 0 26 0;
-#X connect 32 0 24 0;
-#X connect 33 0 29 0;
-#X connect 34 0 19 0;
-#X connect 35 0 20 0;
+#X connect 25 0 26 0;
+#X connect 27 0 25 0;
+#X connect 28 0 25 0;
+#X connect 29 0 24 0;
+#X connect 30 0 28 0;
+#X connect 31 0 19 0;
+#X connect 32 0 20 0;
+#X connect 38 0 1 0;
+#X connect 39 0 21 0;
+#X connect 40 0 25 0;
