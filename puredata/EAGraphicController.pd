@@ -1,5 +1,6 @@
-#N canvas 122 188 1015 712 10;
-#X obj 326 59 EAGraphic;
+#N canvas 510 136 1026 750 10;
+#X declare -lib mrpeach;
+#X obj 326 57 EAGraphic;
 #X obj 46 533 udpsend;
 #X obj 46 568 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -7,11 +8,42 @@
 #X obj 326 476 packOSC;
 #X msg 76 457 connect 192.168.1.4 9000;
 #X msg 64 433 connect 192.168.0.112 9000;
-#X msg 46 406 connect 192.168.0.103 9000;
+#X obj 57 49 knob 32 32 0 360 0 0 empty beat empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 196 150 knob 32 32 0 360 0 0 empty schwell empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 275 33 knob 32 32 0 160 0 0 empty hisiren empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 60 245 s graphOsc1;
+#X obj 274 458 r graphOsc1;
+#X msg 57 143 send /3d/rotationZ \$1;
+#X msg 60 165 send /3d/rotationY \$1;
+#X msg 92 200 send /3d/rotationX \$1;
+#X msg 46 408 connect 192.168.0.105 9000;
+#X obj 173 51 r siren;
+#X floatatom 208 114 5 0 0 0 - - -;
+#X obj 144 69 * 10;
+#X obj 174 90 + 10;
+#X obj 276 85 + 10;
+#X obj 294 593;
+#X obj 191 329 import mrpeach;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 1 0;
 #X connect 5 0 1 0;
 #X connect 6 0 1 0;
-#X connect 7 0 1 0;
+#X connect 7 0 12 0;
+#X connect 8 0 14 0;
+#X connect 9 0 20 0;
+#X connect 11 0 4 0;
+#X connect 12 0 10 0;
+#X connect 13 0 10 0;
+#X connect 14 0 10 0;
+#X connect 15 0 1 0;
+#X connect 16 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 17 0;
+#X connect 19 0 13 0;
+#X connect 20 0 18 1;
+#X connect 20 0 19 1;
