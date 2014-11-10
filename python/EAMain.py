@@ -35,7 +35,7 @@ shader = pi3d.Shader("uv_light")
 objects = []
 objects.append([])
 objects.append([])
-scene = 0
+scene = 3
 scale = 2.
 mysphere = pi3d.Model(file_string='dorn.obj', name='napf', x=0, y=-1, z=-40,
                 sx=2., sy=2., sz=2.)
