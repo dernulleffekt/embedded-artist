@@ -1,4 +1,4 @@
-#N canvas 362 72 1087 809 10;
+#N canvas 190 59 1087 740 10;
 #X obj 419 426 popup 124 25 #ffffff effect none negative solarize sketch
 denoise emboss oilpaint hatch gpen pastel watercolor film blur saturation
 colorswap washedout posterise colorpoint colorbalance cartoon deinterlace1
@@ -111,7 +111,7 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X msg 603 628 /camera/width \$1;
 #X msg 723 631 /camera/height \$1;
 #X obj 446 122 vsl 10 128 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9100 1;
+-1 -1 50 1;
 #X msg 724 452 send /camera/alpha \$1;
 #X obj 724 403 int;
 #X obj 58 674 int;
@@ -140,9 +140,9 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X obj 313 275 vsl 10 128 0 0.98 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 347 275 vsl 10 128 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 382 276 vsl 10 128 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X msg 721 655 /camera/zoomX \$1;
 #X msg 731 678 /camera/zoomY \$1;
 #X msg 749 704 /camera/zoomW \$1;
@@ -193,6 +193,7 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X text 267 394 >;
 #X text 357 266 <;
 #X text 393 265 <;
+#X obj 445 32 inlet;
 #X connect 0 0 18 0;
 #X connect 0 0 4 0;
 #X connect 1 0 0 0;
@@ -310,4 +311,5 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 101 11 37 0;
 #X connect 102 0 5 0;
 #X connect 103 0 5 0;
+#X connect 112 0 40 0;
 #X coords 0 -1 1 1 350 360 2 260 100;

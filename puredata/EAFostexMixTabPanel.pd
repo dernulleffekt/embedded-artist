@@ -1,27 +1,27 @@
-#N canvas 70 79 953 740 10;
+#N canvas 73 59 1128 740 10;
 #X obj 311 311 image fostex.gif;
 #X obj 53 329 knob 24 24 0 127 0 0 empty knob1 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 101 329 knob 24 24 0 127 0 0 empty knob2 empty 0 -8 0 8 -262144
--1 -1 18 1;
+-1 -1 0 1;
 #X obj 149 329 knob 24 24 0 127 0 0 empty knob3 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 55 447 vsl 22 128 0 127 0 0 empty fader1 empty 0 -9 0 10 -262144
--1 -1 5200 1;
+-1 -1 9600 1;
 #X obj 103 447 vsl 22 128 0 127 0 0 empty fader2 empty 0 -9 0 10 -262144
--1 -1 5800 1;
+-1 -1 8600 1;
 #X obj 151 447 vsl 22 128 0 127 0 0 empty fader3 empty 0 -9 0 10 -262144
--1 -1 3900 1;
+-1 -1 6700 1;
 #X obj 197 447 vsl 22 128 0 127 0 0 empty fader4 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 244 447 vsl 22 128 0 127 0 0 empty fader5 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 291 447 vsl 22 128 0 127 0 0 empty fader6 empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 100 1;
 #X obj 337 447 vsl 22 128 0 127 0 0 empty fader7 empty 0 -9 0 10 -262144
--1 -1 9900 1;
+-1 -1 100 1;
 #X obj 383 447 vsl 22 128 0 127 0 0 empty fader8 empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 100 1;
 #X obj 460 446 vsl 22 128 0 127 0 0 empty fader0 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 196 329 knob 24 24 0 127 0 0 empty knob4 empty 0 -8 0 8 -262144
@@ -45,11 +45,11 @@
 #X obj 245 263 knob 24 24 0 127 0 0 empty knob13 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 292 264 knob 24 24 0 127 0 0 empty knob14 empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 652 1;
 #X obj 339 264 knob 24 24 0 127 0 0 empty knob15 empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 2300 1;
 #X obj 387 265 knob 24 24 0 127 0 0 empty knob16 empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 18 1;
 #X obj 52 195 knob 24 24 0 127 0 0 empty knob17 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 101 196 knob 24 24 0 127 0 0 empty knob18 empty 0 -8 0 8 -262144
@@ -73,7 +73,7 @@
 #X obj 100 127 knob 24 24 0 127 0 0 empty knob27 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 149 129 knob 24 24 0 127 0 0 empty knob28 empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 91 1;
 #X obj 197 129 knob 24 24 0 127 0 0 empty knob29 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 245 129 knob 24 24 0 127 0 0 empty knob30 empty 0 -8 0 8 -262144
@@ -89,9 +89,9 @@
 #X obj 493 132 knob 24 24 0 127 0 0 empty knob35 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 487 332 knob 24 24 0 127 0 0 empty knob37 empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 18 1;
 #X obj 441 331 knob 24 24 0 127 0 0 empty knob36 empty 0 -8 0 8 -262144
--1 -1 0 1;
+-1 -1 18 1;
 #X obj 441 266 knob 24 24 0 127 0 0 empty knob38 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 489 267 knob 24 24 0 127 0 0 empty knob39 empty 0 -8 0 8 -262144
@@ -106,9 +106,9 @@
 #X obj 7 711 int;
 #X obj 63 711 int;
 #X msg 370 787 send /arduino S1P\$1;
-#X msg 519 642 send /arduino A1V\$1;
-#X obj 53 298 cnv 15 120 24 empty empty ^---MOTOREN---v 2 12 1 14 -203904
--66577 0;
+#X msg 625 638 send /arduino A1V\$1;
+#X obj 53 298 cnv 15 180 24 empty empty ___MOTOREN_-_CW___ 2 12 1 14
+-203904 -66577 0;
 #X text 30 264 CW;
 #X text 28 331 CCW;
 #X obj 55 583 cnv 15 120 20 empty empty SERVOS 20 12 1 14 -232576 -66577
@@ -124,9 +124,9 @@
 #X obj 161 710 int;
 #X obj 206 710 int;
 #X obj 261 710 int;
-#X obj 551 824 s osc1;
-#X obj 624 824 s osc2;
-#X obj 692 824 s osc3;
+#X obj 657 820 s osc1;
+#X obj 730 820 s osc2;
+#X obj 798 820 s osc3;
 #X obj 393 698 int;
 #X msg 305 720 \$1 14;
 #X msg 348 719 \$1 15;
@@ -141,7 +141,7 @@
 1 11 -204786 -66577 0;
 #X obj 294 230 cnv 15 120 25 empty empty LED-Gate-time 4 12 1 11 -204786
 -66577 0;
-#N canvas 468 212 1022 657 LEDTriggers 0;
+#N canvas 255 142 1022 657 LEDTriggers 0;
 #X obj 74 165 metro;
 #X obj 120 137 expr ($f1 / 127 * 1000) + 100;
 #X obj 52 110 moses 9;
@@ -157,8 +157,6 @@
 #X msg 48 296 40 127;
 #X msg 102 316 40 0;
 #X obj 162 387 s osc1;
-#X msg 162 326 send /arduino D1V1;
-#X msg 168 357 send /arduino D1V0;
 #X obj 372 159 metro;
 #X obj 418 131 expr ($f1 / 127 * 1000) + 100;
 #X obj 350 104 moses 9;
@@ -170,8 +168,6 @@
 #X obj 400 242 delay 100;
 #X obj 372 192 t b b;
 #X obj 369 356 unpack;
-#X msg 460 320 send /arduino D1V1;
-#X msg 466 351 send /arduino D1V0;
 #X obj 460 382 s osc2;
 #X msg 347 289 50 127;
 #X msg 400 310 50 0;
@@ -186,8 +182,6 @@
 #X obj 719 241 delay 100;
 #X obj 691 191 t b b;
 #X obj 688 355 unpack;
-#X msg 779 319 send /arduino D1V1;
-#X msg 785 350 send /arduino D1V0;
 #X text 234 81 values under 9 switches of metro \, in case pot is dirty
 ;
 #X obj 779 381 s osc3;
@@ -198,6 +192,12 @@
 #X obj 539 204 select 113 119 101;
 #X text 569 185 key q w e for ON;
 #X text 582 18 key 1 2 3 for blink;
+#X msg 162 326 send /arduino D1S1;
+#X msg 168 357 send /arduino D1S0;
+#X msg 460 320 send /arduino D1S1;
+#X msg 466 351 send /arduino D1S0;
+#X msg 779 319 send /arduino D1S1;
+#X msg 785 350 send /arduino D1S0;
 #X connect 0 0 9 0;
 #X connect 1 0 0 1;
 #X connect 2 0 4 0;
@@ -209,94 +209,109 @@
 #X connect 6 0 1 0;
 #X connect 7 0 5 0;
 #X connect 8 0 13 0;
-#X connect 8 0 16 0;
+#X connect 8 0 50 0;
 #X connect 9 0 8 0;
 #X connect 9 1 12 0;
-#X connect 9 1 15 0;
+#X connect 9 1 49 0;
 #X connect 11 0 10 0;
 #X connect 11 1 10 1;
 #X connect 12 0 11 0;
 #X connect 13 0 11 0;
-#X connect 15 0 14 0;
-#X connect 16 0 14 0;
-#X connect 17 0 26 0;
-#X connect 18 0 17 1;
-#X connect 19 0 21 0;
-#X connect 19 1 20 0;
-#X connect 20 0 17 0;
+#X connect 15 0 24 0;
+#X connect 16 0 15 1;
+#X connect 17 0 19 0;
+#X connect 17 1 18 0;
+#X connect 18 0 15 0;
+#X connect 19 0 15 0;
+#X connect 20 0 23 1;
 #X connect 21 0 17 0;
-#X connect 22 0 25 1;
-#X connect 23 0 19 0;
-#X connect 23 0 18 0;
-#X connect 24 0 22 0;
-#X connect 25 0 32 0;
-#X connect 25 0 29 0;
-#X connect 26 0 25 0;
-#X connect 26 1 31 0;
-#X connect 26 1 28 0;
-#X connect 27 0 10 0;
-#X connect 27 1 10 1;
-#X connect 28 0 30 0;
-#X connect 29 0 30 0;
-#X connect 31 0 27 0;
-#X connect 32 0 27 0;
-#X connect 33 0 42 0;
-#X connect 34 0 33 1;
-#X connect 35 0 37 0;
-#X connect 35 1 36 0;
-#X connect 36 0 33 0;
-#X connect 37 0 33 0;
-#X connect 38 0 41 1;
-#X connect 39 0 35 0;
-#X connect 39 0 34 0;
-#X connect 40 0 38 0;
-#X connect 41 0 49 0;
-#X connect 41 0 45 0;
-#X connect 42 0 41 0;
-#X connect 42 1 48 0;
-#X connect 42 1 44 0;
-#X connect 43 0 10 0;
-#X connect 43 1 10 1;
-#X connect 44 0 47 0;
-#X connect 45 0 47 0;
-#X connect 48 0 43 0;
-#X connect 49 0 43 0;
-#X connect 50 0 51 0;
-#X connect 51 0 9 0;
-#X connect 51 1 26 0;
-#X connect 51 2 33 0;
-#X connect 51 3 52 0;
-#X connect 52 0 12 0;
-#X connect 52 1 31 0;
-#X connect 52 2 48 0;
+#X connect 21 0 16 0;
+#X connect 22 0 20 0;
+#X connect 23 0 28 0;
+#X connect 23 0 52 0;
+#X connect 24 0 23 0;
+#X connect 24 1 27 0;
+#X connect 24 1 51 0;
+#X connect 25 0 10 0;
+#X connect 25 1 10 1;
+#X connect 27 0 25 0;
+#X connect 28 0 25 0;
+#X connect 29 0 38 0;
+#X connect 30 0 29 1;
+#X connect 31 0 33 0;
+#X connect 31 1 32 0;
+#X connect 32 0 29 0;
+#X connect 33 0 29 0;
+#X connect 34 0 37 1;
+#X connect 35 0 31 0;
+#X connect 35 0 30 0;
+#X connect 36 0 34 0;
+#X connect 37 0 43 0;
+#X connect 37 0 54 0;
+#X connect 38 0 37 0;
+#X connect 38 1 42 0;
+#X connect 38 1 53 0;
+#X connect 39 0 10 0;
+#X connect 39 1 10 1;
+#X connect 42 0 39 0;
+#X connect 43 0 39 0;
+#X connect 44 0 45 0;
+#X connect 45 0 9 0;
+#X connect 45 1 24 0;
+#X connect 45 2 38 0;
+#X connect 45 3 46 0;
+#X connect 46 0 12 0;
+#X connect 46 1 27 0;
+#X connect 46 2 42 0;
+#X connect 49 0 14 0;
+#X connect 50 0 14 0;
+#X connect 51 0 26 0;
+#X connect 52 0 26 0;
+#X connect 53 0 41 0;
+#X connect 54 0 41 0;
 #X restore 638 244 pd LEDTriggers;
 #X obj 53 160 cnv 15 120 25 empty empty IR-Lamps 4 12 1 18 -261234
 -66577 0;
-#X msg 645 644 send /arduino A1V\$1;
-#X obj 645 621 IRScale;
-#X msg 771 644 send /arduino A1V\$1;
-#X obj 519 619 IRScale;
-#X obj 771 621 IRScale;
+#X msg 751 640 send /arduino A1V\$1;
+#X obj 751 617 IRScale;
+#X msg 877 640 send /arduino A1V\$1;
+#X obj 625 615 IRScale;
+#X obj 877 617 IRScale;
 #X obj 630 445 MotorScale;
 #X obj 703 445 MotorScale;
 #X obj 771 445 MotorScale;
 #X obj 621 508 MotorScale;
 #X obj 691 508 MotorScale;
 #X obj 759 508 MotorScale;
-#X msg 499 699 send /arduino M1D0S\$1;
-#X msg 506 727 send /arduino M1D1S\$1;
-#X msg 708 691 send /arduino M1D0S\$1;
-#X msg 655 730 send /arduino M1D1S\$1;
-#X msg 784 759 send /arduino M1D0S\$1;
-#X msg 769 798 send /arduino M1D1S\$1;
+#X msg 605 695 send /arduino M1D0S\$1;
+#X msg 612 723 send /arduino M1D1S\$1;
+#X msg 814 687 send /arduino M1D0S\$1;
+#X msg 761 726 send /arduino M1D1S\$1;
+#X msg 890 755 send /arduino M1D0S\$1;
+#X msg 875 794 send /arduino M1D1S\$1;
 #X obj 370 764 ServoScale;
-#X msg 502 785 send /arduino S1P\$1;
-#X obj 502 762 ServoScale;
-#X msg 640 783 send /arduino S1P\$1;
-#X obj 640 760 ServoScale;
+#X msg 608 781 send /arduino S1P\$1;
+#X obj 608 758 ServoScale;
+#X msg 746 779 send /arduino S1P\$1;
+#X obj 746 756 ServoScale;
 #X obj 308 831 ctlout;
 #X msg 360 810 2;
 #X obj 316 779 loadbang;
+#X text 648 306;
+#X obj 446 362 cnv 15 120 25 empty empty Camera-Alpha 4 12 1 16 -257985
+-66577 0;
+#X obj 622 400 s camalpha1;
+#X obj 705 401 s camalpha2;
+#X obj 792 406 s camalpha3;
+#X obj 790 383 IRScale;
+#X obj 704 368 IRScale;
+#X obj 621 376 IRScale;
+#X obj 438 697 int;
+#X obj 422 638 int;
+#X msg 422 660 \$1 8;
+#X msg 438 719 \$1 17;
+#X obj 54 360 cnv 15 180 24 empty empty ___MOTOREN_-_CCW___ 2 12 1
+14 -203904 -66577 0;
 #X connect 1 0 52 0;
 #X connect 1 0 98 0;
 #X connect 2 0 53 0;
@@ -309,21 +324,26 @@
 #X connect 5 0 109 0;
 #X connect 6 0 69 0;
 #X connect 6 0 111 0;
+#X connect 13 0 123 0;
 #X connect 18 0 80 0;
 #X connect 18 0 95 0;
 #X connect 19 0 81 0;
 #X connect 19 0 96 0;
 #X connect 20 0 82 0;
 #X connect 20 0 97 0;
+#X connect 21 0 124 0;
 #X connect 31 0 88 1;
 #X connect 32 0 88 3;
 #X connect 33 0 88 5;
+#X connect 34 0 120 0;
 #X connect 35 0 93 0;
 #X connect 36 0 91 0;
 #X connect 37 0 94 0;
 #X connect 40 0 88 0;
 #X connect 41 0 88 2;
 #X connect 42 0 88 4;
+#X connect 45 0 121 0;
+#X connect 46 0 122 0;
 #X connect 52 0 77 0;
 #X connect 53 0 78 0;
 #X connect 54 0 62 0;
@@ -376,4 +396,11 @@
 #X connect 111 0 110 0;
 #X connect 113 0 112 2;
 #X connect 114 0 113 0;
+#X connect 120 0 119 0;
+#X connect 121 0 118 0;
+#X connect 122 0 117 0;
+#X connect 123 0 126 0;
+#X connect 124 0 125 0;
+#X connect 125 0 63 0;
+#X connect 126 0 63 0;
 #X coords 0 -1 1 1 600 600 1 10 10;

@@ -2,7 +2,7 @@
 #X declare -lib mrpeach;
 #X obj -618 670 import mrpeach;
 #X obj -500 729 udpsend;
-#X obj -500 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
+#X obj -500 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
 1;
 #X msg -439 708 disconnect;
 #X obj -41 237 EACamera;
@@ -56,7 +56,7 @@
 #X msg 413 390 send /arduinoP0;
 #X obj 126 251 r packosc;
 #X obj 109 44 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
--1 -1 3100 1;
+-1 -1 0 1;
 #X msg 51 154 send /rotationY \$1;
 #X obj 82 469 s osc1;
 #X obj 144 483 s osc2;
@@ -115,19 +115,17 @@
 #X obj 328 361 s osc2;
 #X obj 328 744 s osc3;
 #X obj -262 729 udpsend;
-#X obj -262 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
+#X obj -262 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
 1;
 #X msg -201 708 disconnect;
 #X obj -262 705 packOSC;
 #X obj -10 729 udpsend;
-#X obj -10 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1 1
+#X obj -10 751 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
 ;
 #X msg 51 708 disconnect;
 #X obj -10 705 packOSC;
 #X obj -262 685 r osc2;
 #X obj -10 685 r osc3;
-#X obj 328 1 EACamera;
-#X obj 328 384 EACamera;
 #X obj -379 611 cnv 15 120 60 empty empty empty 20 12 0 14 -204786
 -66577 0;
 #X text -372 610 blink LED:;
@@ -137,6 +135,11 @@
 #X msg -439 684 connect 192.168.0.106 9000;
 #X msg -200 683 connect 192.168.0.107 9000;
 #X msg 48 684 connect 192.168.0.108 9000;
+#X obj 328 9 EACamera;
+#X obj 327 383 EACamera;
+#X obj -41 222 r camalpha1;
+#X obj 328 368 r camalpha3;
+#X obj 327 -4 r camalpha2;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 15 0;
@@ -153,8 +156,11 @@
 #X connect 28 0 25 0;
 #X connect 29 0 24 0;
 #X connect 30 0 28 0;
-#X connect 31 0 19 0;
-#X connect 32 0 20 0;
-#X connect 38 0 1 0;
-#X connect 39 0 21 0;
-#X connect 40 0 25 0;
+#X connect 36 0 1 0;
+#X connect 37 0 21 0;
+#X connect 38 0 25 0;
+#X connect 39 0 19 0;
+#X connect 40 0 20 0;
+#X connect 41 0 4 0;
+#X connect 42 0 40 0;
+#X connect 43 0 39 0;
