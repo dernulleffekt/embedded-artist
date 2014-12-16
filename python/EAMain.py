@@ -23,7 +23,7 @@ camera.setAlpha(64)
 camera.setFrame(100,100,640,480)
 
 # setup 3d
-DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 1.))
+DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 0.))
 mylight = pi3d.Light(lightpos=(-2.0, -1.0, 10.0), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 0.3))
 
 shader = pi3d.Shader("uv_light")
@@ -60,7 +60,7 @@ for i in range(count):
 
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
-receive_address = EANet.get_interface_ip("eth0"), 9000
+receive_address = EANet.get_interface_ip("eth0:1"), 9000
 print "OSC going to listen on %s" % receive_address[0]
 xloc = 1.0;
 yloc = 1.0;
@@ -86,10 +86,7 @@ UART = serial.Serial("/dev/ttyAMA0", baudrate=9600)
 # define a message-handler function for the server to call.
 def arduino_handler(addr, tags,stuff,source):
 	global UART
-	print "so ein Arduino Kram, ne"
-    	print "with addr : %s" % addr
-    	print "typetags %s" % tags
-    	print "data %s" % stuff
+    	#print "data %s" % stuff
         #UART.write(stuff)
         #UART.write("\n")
 	#if len(stuff) == 1:
@@ -345,11 +342,12 @@ try :
 			o.rotateIncZ((rotationZ-i)*0.02)
 			#o.position(xloc, yloc, 15.0)
 			i = i + 1
-	
+	time.sleep(0.01)	
 except KeyboardInterrupt :
     camera.close()
     print "\nClosing OSCServer."
     s.close()
     print "Waiting for Server-thread to finish"
     st.join() ##!!!
+    UART.close()
     print "Done"
