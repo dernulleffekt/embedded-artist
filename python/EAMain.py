@@ -15,12 +15,17 @@ import OSC
 import time, threading
 import pi3d
 import EANet
+import EAOsc
 
 # init the camera
 from EACamera import EACamera
+from EAVideo import EAVideo
+
 camera = EACamera()
 camera.setAlpha(64)
 camera.setFrame(100,100,640,480)
+
+video = EAVideo()
 
 # setup 3d
 DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 0.))
@@ -58,6 +63,9 @@ for i in range(count):
 #mysphere.reparentTo(anchor)
 #clony.reparentTo(mysphere)
 
+### Arduino
+UART = serial.Serial("/dev/ttyAMA0", baudrate=9600)
+
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
 receive_address = EANet.get_interface_ip("eth0:1"), 9000
@@ -75,13 +83,6 @@ s = OSC.OSCServer(receive_address) # basic
 ##s = OSC.ForkingOSCServer(receive_address) # forking
 
 
-# this registers a 'default' handler (for unmatched messages), 
-# an /'error' handler, an '/info' handler.
-# And, if the client supports it, a '/subscribe' & '/unsubscribe' handler
-s.addDefaultHandlers()
-
-### Arduino
-UART = serial.Serial("/dev/ttyAMA0", baudrate=9600)
 
 # define a message-handler function for the server to call.
 def arduino_handler(addr, tags,stuff,source):
@@ -187,98 +188,12 @@ def scene_handler(addr, tags, stuff, source):
     global scene
     scene = int(stuff[0])	
 
-def cameraAlpha_handler(addr, tags, stuff, source):
-    global camera
-    camera.setAlpha(int(stuff[0]))		
- 
-def cameraEffect_handler(addr, tags, stuff, source):
-    global camera
-    camera.setEffect(int(stuff[0]))		
- 
-def cameraSaturation_handler(addr, tags, stuff, source):
-    global camera
-    camera.setSaturation(int(stuff[0]))		
- 
-def cameraSharpness_handler(addr, tags, stuff, source):
-    global camera
-    camera.setSharpness(int(stuff[0]))		
- 
-def cameraShutter_handler(addr, tags, stuff, source):
-    global camera
-    camera.setShutterspeed(int(stuff[0]))		
- 
-def cameraX_handler(addr, tags, stuff, source):
-    global camera
-    camera.setX(int(stuff[0]))		
+    
+# this registers a 'default' handler (for unmatched messages), 
+# an /'error' handler, an '/info' handler.
+# And, if the client supports it, a '/subscribe' & '/unsubscribe' handler
+s.addDefaultHandlers()
 
-def cameraY_handler(addr, tags, stuff, source):
-    global camera
-    camera.setY(int(stuff[0]))		
-
-def cameraWidth_handler(addr, tags, stuff, source):
-    global camera
-    camera.setWidth(int(stuff[0]))		
-
-def cameraHeight_handler(addr, tags, stuff, source):
-    global camera
-    camera.setHeight(int(stuff[0]))		
-
-def cameraFramerate_handler(addr, tags, stuff, source):
-    global camera
-    camera.setFramerate(int(stuff[0]))		
-
-def cameraHFlip_handler(addr, tags, stuff, source):
-    global camera
-    camera.setHFlip(bool(stuff[0]))		
-def cameraVFlip_handler(addr, tags, stuff, source):
-    global camera
-    camera.setVFlip(bool(stuff[0]))		
-def cameraFullscreen_handler(addr, tags, stuff, source):
-    global camera
-    camera.setFullscreen(bool(stuff[0]))		
-
-def cameraZoomX_handler(addr, tags, stuff, source):
-    global camera
-    camera.setZoomX(float(stuff[0]))		
-
-def cameraZoomY_handler(addr, tags, stuff, source):
-    global camera
-    camera.setZoomY(float(stuff[0]))		
-
-def cameraZoomWidth_handler(addr, tags, stuff, source):
-    global camera
-    camera.setZoomW(float(stuff[0]))		
-
-def cameraZoomHeight_handler(addr, tags, stuff, source):
-    global camera
-    camera.setZoomH(float(stuff[0]))		
-
-def cameraSwitch_handler(addr, tags, stuff, source):
-    global camera
-    if bool(stuff[0]):
-	camera.start();
-    else:
-	camera.stop()
-
-def videoPlay_handler(addr, tags, stuff, source):
-    global camera
-    camera.playVideo(stuff[0])		
-
-def videoPause_handler(addr, tags, stuff, source):
-    global camera
-    camera.pauseVideo()		
-
-def videoStop_handler(addr, tags, stuff, source):
-    global camera
-    camera.stopVideo()		
-
-def videoFaster_handler(addr, tags, stuff, source):
-    global camera
-    camera.fasterVideo()		
-
-def videoSlower_handler(addr, tags, stuff, source):
-    global camera
-    camera.slowerVideo()		
 
 s.addMsgHandler("/arduino", arduino_handler) # adding our function
 s.addMsgHandler("/print", printing_handler) # adding our function
@@ -291,32 +206,10 @@ s.addMsgHandler("/3d/rotationX", rotationX_handler) # adding our function
 s.addMsgHandler("/3d/rotationY", rotationY_handler) # adding our function
 s.addMsgHandler("/3d/scene", scene_handler) # adding our function
 s.addMsgHandler("/3d/rotationZ", rotationZ_handler) # adding our function
-s.addMsgHandler("/camera/alpha", cameraAlpha_handler) # adding our function
-s.addMsgHandler("/camera/effect", cameraEffect_handler) # adding our function
-s.addMsgHandler("/camera/saturation", cameraSaturation_handler) # adding our function
-s.addMsgHandler("/camera/sharpness", cameraSharpness_handler) # adding our function
-s.addMsgHandler("/camera/shutter", cameraShutter_handler) # adding our function
-s.addMsgHandler("/camera/framerate", cameraFramerate_handler) # adding our function
-s.addMsgHandler("/camera/x", cameraX_handler) # adding our function
-s.addMsgHandler("/camera/y", cameraY_handler) # adding our function
-s.addMsgHandler("/camera/width", cameraWidth_handler) # adding our function
-s.addMsgHandler("/camera/height", cameraHeight_handler) # adding our function
-s.addMsgHandler("/camera/switch", cameraSwitch_handler) # adding our function
 
-s.addMsgHandler("/camera/zoomX", cameraZoomX_handler) # adding our function
-s.addMsgHandler("/camera/zoomY", cameraZoomY_handler) # adding our function
-s.addMsgHandler("/camera/zoomW", cameraZoomWidth_handler) # adding our function
-s.addMsgHandler("/camera/zoomH", cameraZoomHeight_handler) # adding our function
+s.addMsgHandler("/camera", camera.oscHandler) # adding our function
 
-s.addMsgHandler("/camera/hflip", cameraHFlip_handler) # adding our function
-s.addMsgHandler("/camera/vflip", cameraVFlip_handler) # adding our function
-s.addMsgHandler("/camera/fullscreen", cameraFullscreen_handler) # adding our function
-
-s.addMsgHandler("/video/play", videoPlay_handler) # adding our function
-s.addMsgHandler("/video/pause", videoPause_handler) # adding our function
-s.addMsgHandler("/video/stop", videoStop_handler) # adding our function
-s.addMsgHandler("/video/slower", videoSlower_handler) # adding our function
-s.addMsgHandler("/video/faster", videoFaster_handler) # adding our function
+s.addMsgHandler("/video", video.oscHandler) # adding our function
 
 # just checking which handlers we have added
 print "Registered Callback-functions are :"
@@ -337,14 +230,15 @@ try :
 	if (scene < 2): # scene 2 implicit empty 
   		for o in objects[scene]:	
 			o.draw()
-	  		o.rotateIncX((rotationX+i)*0.01)
-			o.rotateIncY((rotationY+i)*0.12)
-			o.rotateIncZ((rotationZ-i)*0.02)
+	  		#o.rotateIncX((rotationX+i)*0.01)
+			#o.rotateIncY((rotationY+i)*0.12)
+			#o.rotateIncZ((rotationZ-i)*0.02)
 			#o.position(xloc, yloc, 15.0)
 			i = i + 1
 	time.sleep(0.01)	
 except KeyboardInterrupt :
     camera.close()
+    video.close()
     print "\nClosing OSCServer."
     s.close()
     print "Waiting for Server-thread to finish"

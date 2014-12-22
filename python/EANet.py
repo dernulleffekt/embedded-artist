@@ -18,6 +18,7 @@ if os.name != "nt":
     	if ip.startswith("127.") and os.name != "nt":
          interfaces = [
             	"eth0",
+                "eth0:1",
             	"eth1",
             	"eth2",
             	"wlan0",

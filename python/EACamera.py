@@ -1,8 +1,6 @@
-import pyomxplayer
 import picamera
 class EACamera:
 	def __init__(self):
-		self.omx = None
 		self.camera = None
 		# dont know if these are good starting values
 		self.vflip = 0
@@ -26,8 +24,6 @@ class EACamera:
 		'none','negative','solarize','sketch','denoise','emboss','oilpaint','hatch','gpen','pastel','watercolor','film','blur','saturation','colorswap','washedout','posterise','colorpoint','colorbalance','cartoon','deinterlace1','deinterlace2']
 
 	def close(self):
-		if (self.omx != None):
-			self.omx.stop()
 		if (self.camera != None):
 			self.camera.close()
 
@@ -152,19 +148,63 @@ class EACamera:
 		if (self.camera != None):
 			self.camera.zoom = (self.zoomX,self.zoomY,self.zoomW,self.zoomH)
 	
-	# --- video player functions ---
-	def playVideo(self,videofile):
-		if (self.omx != None):
-			self.omx.stop()
-		self.omx = pyomxplayer.OMXPlayer(videofile)
-	
-	def stopVideo(self):
-		self.omx.stop()
-
-	def pauseVideo(self):
-		self.omx.toggle_pause()
-	
-	def fasterVideo(self):
-		self.omx.set_faster()
-	def slowerVideo(self):
-		self.omx.set_slower()
+        def oscHandler(self, addr, tags, stuff, source):
+                if isinstance(stuff[0],basestring):
+                        if stuff[0] == "alpha":
+                                if isinstance(stuff[1],int):
+                                        self.setAlpha(stuff[1])
+                        elif stuff[0] == "effect":
+                                if isinstance(stuff[1],int):
+                                        self.setEffect(stuff[1])
+                        elif stuff[0] == "saturation":
+                                if isinstance(stuff[1],int):
+                                        self.setSaturation(stuff[1])
+                        elif stuff[0] == "sharpness":
+                                if isinstance(stuff[1],int):
+                                        self.setSharpness(stuff[1])
+                        elif stuff[0] == "shutter":
+                                if isinstance(stuff[1],int):
+                                        self.setShutterspeed(stuff[1])
+                        elif stuff[0] == "x":
+                                if isinstance(stuff[1],int):
+                                        self.setX(stuff[1])
+                        elif stuff[0] == "y":
+                                if isinstance(stuff[1],int):
+                                        self.setY(stuff[1])
+                        elif stuff[0] == "width":
+                                if isinstance(stuff[1],int):
+                                        self.setWidth(stuff[1])
+                        elif stuff[0] == "height":
+                                if isinstance(stuff[1],int):
+                                        self.setHeight(stuff[1])
+                        elif stuff[0] == "fullscreen":
+                                if isinstance(stuff[1],bool):
+                                        self.setFullscreen(stuff[1])
+                        elif stuff[0] == "framerate":
+                                if isinstance(stuff[1],int):
+                                        self.setFramerate(stuff[1])
+                        elif stuff[0] == "hflip":
+                                if isinstance(stuff[1],bool):
+                                        self.setHFlip(stuff[1])
+                        elif stuff[0] == "vflip":
+                                if isinstance(stuff[1],bool):
+                                        self.setVFlip(stuff[1])
+                        elif stuff[0] == "zoomx":
+                                if isinstance(stuff[1],float):
+                                        self.setZoomX(stuff[1])
+                        elif stuff[0] == "zoomy":
+                                if isinstance(stuff[1],float):
+                                        self.setZoomY(stuff[1])
+                        elif stuff[0] == "zoomw":
+                                if isinstance(stuff[1],float):
+                                        self.setZoomW(stuff[1])
+                        elif stuff[0] == "zoomh":
+                                if isinstance(stuff[1],float):
+                                        self.setZoomH(stuff[1])
+                                        
+                        elif stuff[0] == "switch":
+                                if isinstance(stuff[1],bool):
+                                        if stuff[1]:
+                                                self.start()
+                                        else:
+                                                self.stop()
