@@ -28,6 +28,7 @@ class EACamera:
 			self.camera.close()
 
 	def start(self):
+                print "start camera"
 		if (self.camera == None):# initialize the camera to given values
 			self.camera = picamera.PiCamera()
 			self.camera.start_preview()
@@ -45,6 +46,7 @@ class EACamera:
 			self.camera.start_preview()
 
 	def stop(self):
+                print "stop camera"
 		if (self.camera != None):
 			self.camera.stop_preview()
 			self.camera.close()
@@ -178,17 +180,27 @@ class EACamera:
                                 if isinstance(stuff[1],int):
                                         self.setHeight(stuff[1])
                         elif stuff[0] == "fullscreen":
-                                if isinstance(stuff[1],bool):
-                                        self.setFullscreen(stuff[1])
+                                if isinstance(stuff[1],int):
+                                        if stuff[1] == 0:
+                                                self.setFullscreen(False)
+                                        else:
+                                                self.setFullscreen(True)
+                                                
                         elif stuff[0] == "framerate":
                                 if isinstance(stuff[1],int):
                                         self.setFramerate(stuff[1])
                         elif stuff[0] == "hflip":
-                                if isinstance(stuff[1],bool):
-                                        self.setHFlip(stuff[1])
+                                if isinstance(stuff[1],int):
+                                        if stuff[1] == 0:
+                                                self.setHFlip(False)
+                                        else:
+                                                self.setHFlip(True)
                         elif stuff[0] == "vflip":
-                                if isinstance(stuff[1],bool):
-                                        self.setVFlip(stuff[1])
+                                if isinstance(stuff[1],int):
+                                        if stuff[1] == 0:
+                                                self.setVFlip(False)
+                                        else:
+                                                self.setVFlip(True)
                         elif stuff[0] == "zoomx":
                                 if isinstance(stuff[1],float):
                                         self.setZoomX(stuff[1])
@@ -203,8 +215,8 @@ class EACamera:
                                         self.setZoomH(stuff[1])
                                         
                         elif stuff[0] == "switch":
-                                if isinstance(stuff[1],bool):
-                                        if stuff[1]:
+                                if isinstance(stuff[1],int):
+                                        if stuff[1]>0:
                                                 self.start()
                                         else:
                                                 self.stop()

@@ -13,7 +13,6 @@ import socket
 import serial
 import OSC
 import time, threading
-import pi3d
 import EANet
 import EAOsc
 import EA3D
