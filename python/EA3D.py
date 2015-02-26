@@ -2,7 +2,7 @@ import pi3d
 class EA3D:
     def __init__(self):
         # setup 3d
-        self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 0.))
+        self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 1.))
         mylight = pi3d.Light(lightpos=(-2.0, -1.0, 10.0), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 0.3))
 
         shader = pi3d.Shader("uv_light")
