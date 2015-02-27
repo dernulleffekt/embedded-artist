@@ -1,8 +1,8 @@
-#N canvas 42 183 1239 752 10;
+#N canvas 40 59 1239 740 10;
 #X declare -lib mrpeach;
 #X obj -317 612 import mrpeach;
 #X obj -314 676 udpsend;
-#X obj -314 698 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
+#X obj -314 698 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
 1;
 #X msg -266 659 disconnect;
 #X obj 341 2 EAVideoPlay;
@@ -108,7 +108,7 @@
 #X obj 410 458 s osc2;
 #X obj 416 690 s osc3;
 #X obj -114 680 udpsend;
-#X obj -114 702 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
+#X obj -114 702 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
 1;
 #X msg -63 660 disconnect;
 #X obj -114 656 packOSC;
@@ -220,12 +220,10 @@
 -1 -1;
 #X obj -369 -3 EAFostexMixTabPanel;
 #X obj 743 -6 r size1;
-#X obj 740 224 r size2;
+#X obj 740 226 r size2;
 #X obj 736 457 r size3;
 #X obj 668 226 r strainV2;
-#X obj 450 244 EACamera;
-#X msg -89 699 connect 192.168.0.109 9000;
-#X msg -293 698 connect 192.168.0.108 9000;
+#X obj 446 246 EACamera;
 #X obj 286 -1 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 339 2 0;
@@ -236,7 +234,9 @@
 #X text 243 18 video2;
 #X obj 341 245 EAVideoPlay;
 #X obj 338 487 EAVideoPlay;
-#X msg 109 701 connect 192.168.0.112 9000;
+#X msg -293 698 connect 192.168.0.111 9000;
+#X msg -89 699 connect 192.168.0.112 9000;
+#X msg 109 701 connect 192.168.0.113 9000;
 #X obj 446 17 EACamera;
 #X obj 453 477 EACamera;
 #X connect 1 0 2 0;
@@ -283,18 +283,18 @@
 #X connect 61 0 76 7;
 #X connect 62 0 63 4;
 #X connect 63 0 12 0;
-#X connect 64 0 14 0;
-#X connect 65 0 1 0;
-#X connect 66 0 67 0;
-#X connect 67 0 4 0;
-#X connect 67 0 72 0;
-#X connect 67 0 73 0;
-#X connect 68 0 4 0;
-#X connect 68 0 72 0;
-#X connect 68 0 73 0;
-#X connect 69 0 68 0;
-#X connect 72 0 10 0;
-#X connect 73 0 11 0;
+#X connect 64 0 65 0;
+#X connect 65 0 4 0;
+#X connect 65 0 70 0;
+#X connect 65 0 71 0;
+#X connect 66 0 4 0;
+#X connect 66 0 70 0;
+#X connect 66 0 71 0;
+#X connect 67 0 66 0;
+#X connect 70 0 10 0;
+#X connect 71 0 11 0;
+#X connect 72 0 1 0;
+#X connect 73 0 14 0;
 #X connect 74 0 18 0;
 #X connect 75 0 8 0;
 #X connect 76 0 13 0;

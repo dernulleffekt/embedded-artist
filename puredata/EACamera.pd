@@ -1,4 +1,4 @@
-#N canvas 152 59 1087 740 10;
+#N canvas 132 59 1087 740 10;
 #X obj 449 281 popup 124 25 #ffffff effect none negative solarize sketch
 denoise emboss oilpaint hatch gpen pastel watercolor film blur saturation
 colorswap washedout posterise colorpoint colorbalance cartoon deinterlace1
@@ -95,15 +95,15 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X text 498 143 < file >;
 #X obj 266 104 cnv 15 200 205 empty empty preview 20 0 1 10 -204800
 -66577 0;
-#X obj 270 110 grid position 160 0 1990 90 0 1990 1 1 1 10 10 474 32
+#X obj 270 110 grid position 160 0 1990 90 0 1990 1 1 1 10 10 477 273
 ;
 #X floatatom 270 201 5 0 3000 0 - - -;
 #X floatatom 398 201 5 -100 3000 0 - - -;
 #X obj 301 201 expr 1930 - $f1;
 #X floatatom 289 219 5 0 3000 0 - - -;
-#X floatatom 368 219 5 -100 3000 0 - - -;
+#X floatatom 366 222 5 -100 3000 0 - - -;
 #X obj 433 121 vsl 10 80 0 255 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5762 1;
 #X obj 724 403 int;
 #X obj 58 674 int;
 #X obj 156 534 int;
@@ -128,14 +128,14 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X obj 312 242 vsl 10 40 0 0.95 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 346 242 vsl 10 40 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1700 1;
 #X obj 377 242 vsl 10 40 0.05 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X floatatom 269 290 5 0 0 0 - - -;
 #X floatatom 304 290 5 0 0 0 - - -;
 #X floatatom 338 290 5 0 0 0 - - -;
 #X floatatom 372 290 5 0 0 0 - - -;
-#X obj 446 184 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
+#X obj 446 184 tgl 20 0 empty empty empty 17 7 0 10 -204786 -1 -1 1
 1;
 #X text 435 201 start;
 #X obj 764 362 int;
@@ -166,7 +166,7 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X obj 798 275 expr 1930 - $f1;
 #X text 327 219 scale;
 #X obj 702 219 route 0 1 2 3 4 5 6 7 8 9 10 11;
-#X msg 509 610 \$1 10;
+#X msg 505 604 \$1 10;
 #X msg 557 610 \$1 11;
 #X text 431 103 alpha;
 #X obj 77 483 table \$0-cameramemory 2048;
@@ -202,15 +202,17 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X msg 481 647 /camera y \$1;
 #X msg 565 641 /camera width \$1;
 #X msg 723 631 /camera height \$1;
-#X msg 721 655 /camera zoomX \$1;
-#X msg 731 678 /camera zoomY \$1;
-#X msg 749 704 /camera zoomW \$1;
-#X msg 764 726 /camera zoomH \$1;
 #X msg 748 603 send /camera vflip \$1;
 #X msg 741 555 send /camera hflip \$1;
 #X msg 707 500 send /camera fullscreen \$1;
 #X msg 724 452 send /camera alpha \$1;
 #X msg 764 384 send /camera switch \$1;
+#X obj 548 437 int;
+#X obj 475 517 int;
+#X msg 721 655 /camera zoomx \$1;
+#X msg 731 678 /camera zoomy \$1;
+#X msg 749 703 /camera zoomw \$1;
+#X msg 764 726 /camera zoomh \$1;
 #X connect 0 0 113 0;
 #X connect 0 0 4 0;
 #X connect 1 0 0 0;
@@ -241,12 +243,12 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 28 0 116 0;
 #X connect 28 0 63 0;
 #X connect 29 0 28 0;
-#X connect 30 0 117 0;
 #X connect 30 0 85 0;
-#X connect 31 0 118 0;
+#X connect 30 0 125 0;
 #X connect 31 0 86 0;
+#X connect 31 0 124 0;
 #X connect 32 0 33 0;
-#X connect 33 0 126 0;
+#X connect 33 0 122 0;
 #X connect 33 0 61 0;
 #X connect 34 0 114 0;
 #X connect 34 0 72 0;
@@ -257,22 +259,22 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 40 0 47 0;
 #X connect 41 0 48 0;
 #X connect 44 0 46 0;
-#X connect 46 0 125 0;
+#X connect 46 0 121 0;
 #X connect 46 0 69 0;
-#X connect 47 0 124 0;
+#X connect 47 0 120 0;
 #X connect 47 0 67 0;
-#X connect 48 0 123 0;
+#X connect 48 0 119 0;
 #X connect 48 0 68 0;
 #X connect 49 0 53 0;
 #X connect 50 0 54 0;
 #X connect 51 0 55 0;
 #X connect 52 0 56 0;
-#X connect 53 0 119 0;
-#X connect 54 0 120 0;
-#X connect 55 0 121 0;
-#X connect 56 0 122 0;
+#X connect 53 0 126 0;
+#X connect 54 0 127 0;
+#X connect 55 0 128 0;
+#X connect 56 0 129 0;
 #X connect 57 0 59 0;
-#X connect 59 0 127 0;
+#X connect 59 0 123 0;
 #X connect 60 0 0 0;
 #X connect 61 0 5 0;
 #X connect 62 0 5 0;
@@ -321,7 +323,7 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 105 0 50 0;
 #X connect 106 0 27 0;
 #X connect 107 0 28 0;
-#X connect 108 0 30 0;
+#X connect 108 0 31 0;
 #X connect 109 0 6 0;
 #X connect 110 0 6 0;
 #X connect 111 0 6 0;
@@ -338,8 +340,10 @@ washedout posterise colorpoint colorbalance cartoon deinterlace1 deinterlace2
 #X connect 121 0 6 0;
 #X connect 122 0 6 0;
 #X connect 123 0 6 0;
-#X connect 124 0 6 0;
-#X connect 125 0 6 0;
+#X connect 124 0 118 0;
+#X connect 125 0 117 0;
 #X connect 126 0 6 0;
 #X connect 127 0 6 0;
+#X connect 128 0 6 0;
+#X connect 129 0 6 0;
 #X coords 0 -1 1 1 320 210 2 260 100;
