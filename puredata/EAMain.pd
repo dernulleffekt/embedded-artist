@@ -1,8 +1,8 @@
-#N canvas 40 59 1239 740 10;
+#N canvas 123 95 1239 740 10;
 #X declare -lib mrpeach;
 #X obj -317 612 import mrpeach;
 #X obj -314 676 udpsend;
-#X obj -314 698 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
+#X obj -314 698 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
 1;
 #X msg -266 659 disconnect;
 #X obj 341 2 EAVideoPlay;
@@ -108,12 +108,12 @@
 #X obj 410 458 s osc2;
 #X obj 416 690 s osc3;
 #X obj -114 680 udpsend;
-#X obj -114 702 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1
+#X obj -114 702 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0
 1;
 #X msg -63 660 disconnect;
 #X obj -114 656 packOSC;
 #X obj 92 683 udpsend;
-#X obj 88 703 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 1 1
+#X obj 88 703 tgl 15 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
 ;
 #X msg 146 661 disconnect;
 #X obj 92 659 packOSC;
@@ -140,7 +140,7 @@
 #X obj 609 457 r strain3;
 #X obj 676 -7 r strainV1;
 #X obj 668 456 r strainV3;
-#X obj 240 54 tgl 40 0 empty empty FX__none/neg 17 7 0 10 -4032 -1
+#X obj 239 203 tgl 40 0 empty empty FX__none/neg 17 7 0 10 -4032 -1
 -1 0 1;
 #N canvas 664 181 450 412 switchFX 0;
 #X obj -1697 -501 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -165,10 +165,10 @@
 #X connect 9 0 0 0;
 #X connect 9 1 2 0;
 #X connect 10 0 9 0;
-#X restore 239 98 pd switchFX;
-#X obj 239 125 tgl 40 0 empty empty Full-Screen 17 7 0 10 -260097 -1
+#X restore 238 247 pd switchFX;
+#X obj 238 274 tgl 40 0 empty empty Full-Screen 17 7 0 10 -260097 -1
 -1 0 1;
-#X obj 238 169 s fullscreen;
+#X obj 237 318 s fullscreen;
 #X obj 767 63 r fullscreen;
 #X text 770 15 comment;
 #N canvas 43 264 625 384 position 0;
@@ -209,14 +209,14 @@
 #X connect 16 0 3 0;
 #X connect 17 0 16 0;
 #X connect 18 0 6 0;
-#X restore 241 239 pd position;
+#X restore 240 388 pd position;
 #X obj 770 13 r posV1;
 #X obj 771 31 r posH1;
 #X obj 771 185 r posV1;
 #X obj 769 204 r posH1;
 #X obj 775 414 r posV1;
 #X obj 773 437 r posH1;
-#X obj 241 192 bng 40 250 50 0 empty empty Position 17 7 0 10 -257985
+#X obj 240 341 bng 40 250 50 0 empty empty Position 17 7 0 10 -257985
 -1 -1;
 #X obj -369 -3 EAFostexMixTabPanel;
 #X obj 743 -6 r size1;
@@ -232,13 +232,20 @@
 -1;
 #X text 244 -1 video1;
 #X text 243 18 video2;
-#X obj 341 245 EAVideoPlay;
-#X obj 338 487 EAVideoPlay;
 #X msg -293 698 connect 192.168.0.111 9000;
 #X msg -89 699 connect 192.168.0.112 9000;
 #X msg 109 701 connect 192.168.0.113 9000;
 #X obj 446 17 EACamera;
 #X obj 453 477 EACamera;
+#X obj 237 139 select 121 120 99;
+#X obj 236 117 key;
+#X text 243 171 X for Full-Screen;
+#X text 243 158 Y for FX;
+#X text 243 185 C for Position;
+#X obj 341 245 EAVideoPlay;
+#X obj 338 487 EAVideoPlay;
+#X obj 288 50 bng 30 250 50 0 empty empty empty 17 7 0 10 -258113 -1
+-1;
 #X connect 1 0 2 0;
 #X connect 3 0 1 0;
 #X connect 4 0 9 0;
@@ -252,49 +259,56 @@
 #X connect 21 0 18 0;
 #X connect 22 0 17 0;
 #X connect 23 0 21 0;
-#X connect 28 0 75 0;
-#X connect 29 0 76 0;
+#X connect 28 0 73 0;
+#X connect 29 0 74 0;
 #X connect 30 0 63 0;
-#X connect 33 0 75 1;
+#X connect 33 0 73 1;
 #X connect 34 0 63 1;
-#X connect 35 0 76 1;
-#X connect 36 0 75 2;
+#X connect 35 0 74 1;
+#X connect 36 0 73 2;
 #X connect 37 0 63 2;
-#X connect 38 0 76 2;
-#X connect 39 0 75 3;
+#X connect 38 0 74 2;
+#X connect 39 0 73 3;
 #X connect 40 0 63 3;
-#X connect 41 0 76 3;
-#X connect 42 0 75 4;
-#X connect 43 0 76 4;
+#X connect 41 0 74 3;
+#X connect 42 0 73 4;
+#X connect 43 0 74 4;
 #X connect 44 0 45 0;
 #X connect 46 0 47 0;
 #X connect 48 0 63 8;
-#X connect 48 0 75 8;
-#X connect 48 0 76 8;
-#X connect 51 0 75 5;
-#X connect 52 0 75 6;
+#X connect 48 0 73 8;
+#X connect 48 0 74 8;
+#X connect 51 0 73 5;
+#X connect 52 0 73 6;
 #X connect 53 0 63 5;
 #X connect 54 0 63 6;
-#X connect 55 0 76 5;
-#X connect 56 0 76 6;
+#X connect 55 0 74 5;
+#X connect 56 0 74 6;
 #X connect 57 0 50 0;
-#X connect 59 0 75 7;
+#X connect 59 0 73 7;
 #X connect 60 0 63 7;
-#X connect 61 0 76 7;
+#X connect 61 0 74 7;
 #X connect 62 0 63 4;
 #X connect 63 0 12 0;
 #X connect 64 0 65 0;
 #X connect 65 0 4 0;
-#X connect 65 0 70 0;
-#X connect 65 0 71 0;
+#X connect 65 0 80 0;
+#X connect 65 0 81 0;
 #X connect 66 0 4 0;
-#X connect 66 0 70 0;
-#X connect 66 0 71 0;
+#X connect 66 0 80 0;
+#X connect 66 0 81 0;
 #X connect 67 0 66 0;
-#X connect 70 0 10 0;
-#X connect 71 0 11 0;
-#X connect 72 0 1 0;
-#X connect 73 0 14 0;
-#X connect 74 0 18 0;
-#X connect 75 0 8 0;
-#X connect 76 0 13 0;
+#X connect 70 0 1 0;
+#X connect 71 0 14 0;
+#X connect 72 0 18 0;
+#X connect 73 0 8 0;
+#X connect 74 0 13 0;
+#X connect 75 0 44 0;
+#X connect 75 1 46 0;
+#X connect 75 2 57 0;
+#X connect 76 0 75 0;
+#X connect 80 0 10 0;
+#X connect 81 0 11 0;
+#X connect 82 0 4 1;
+#X connect 82 0 80 1;
+#X connect 82 0 81 1;

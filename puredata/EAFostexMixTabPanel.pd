@@ -1,4 +1,4 @@
-#N canvas 44 59 1128 740 10;
+#N canvas 40 110 1128 740 10;
 #X obj 311 311 image fostex.gif;
 #X obj 53 329 knob 24 24 0 127 0 0 empty knob1 empty 0 -8 0 8 -262144
 -1 -1 0 1;
@@ -17,7 +17,7 @@
 #X obj 244 447 vsl 22 128 0 127 0 0 empty fader5 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 291 447 vsl 22 128 0 127 0 0 empty fader6 empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 337 447 vsl 22 128 0 127 0 0 empty fader7 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 383 447 vsl 22 128 0 127 0 0 empty fader8 empty 0 -9 0 10 -262144
@@ -79,7 +79,7 @@
 #X obj 245 129 knob 24 24 0 127 0 0 empty knob30 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 293 130 knob 24 24 0 127 0 0 empty knob31 empty 0 -8 0 8 -262144
--1 -1 1700 1;
+-1 -1 0 1;
 #X obj 341 130 knob 24 24 0 127 0 0 empty knob32 empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 389 131 knob 24 24 0 127 0 0 empty knob33 empty 0 -8 0 8 -262144
@@ -276,7 +276,7 @@
 #X obj 439 296 cnv 15 80 25 empty empty IR_delay 4 12 1 14 -261234
 -66577 0;
 #X text 648 306 comment;
-#N canvas 122 142 1022 657 LEDTriggers 0;
+#N canvas 290 190 1022 657 LEDTriggers 1;
 #X obj 74 165 metro;
 #X obj 120 137 expr ($f1 / 127 * 1000) + 100;
 #X obj 52 110 moses 9;
