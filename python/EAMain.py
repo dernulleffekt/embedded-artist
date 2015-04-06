@@ -14,7 +14,6 @@ import serial
 import OSC
 import time, threading
 import EANet
-import EAOsc
 import EA3D
 # init the camera
 from EACamera import EACamera
@@ -107,6 +106,9 @@ try :
 			o.rotateIncZ((graphics.rotationZ-i)*0.02)
 			o.position(graphics.xloc, graphics.yloc, 15.0)
 			i = i + 1
+	elif (graphics.scene == 3):
+		graphics.mysphere.draw()
+		
 	time.sleep(0.01)	
 except KeyboardInterrupt :
     camera.close()
