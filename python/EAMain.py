@@ -14,6 +14,7 @@ import serial
 import OSC
 import time, threading
 import EANet
+#import EAOsc
 import EA3D
 # init the camera
 from EACamera import EACamera
