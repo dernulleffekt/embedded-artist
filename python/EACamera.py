@@ -123,7 +123,8 @@ class EACamera:
 	def setEffect(self,effect):
 		self.effect = effect
 		if (self.camera != None):
-			self.camera.image_effect = self.effects[effect]
+			if (effect > -1) and (effect < len(self.effects) ):
+				self.camera.image_effect = self.effects[effect]
 
 	def setFramerate(self,rate):
 		self.framerate = rate
