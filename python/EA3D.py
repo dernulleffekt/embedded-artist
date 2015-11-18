@@ -7,36 +7,56 @@ class EA3D:
 	self.backgroundBlue = 0.0
         self.backgroundAlpha = 1.0
 
-        self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, .0))
+        self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 1.0))
         mylight = pi3d.Light(lightpos=(-2.0, -1.0, 10.0), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 0.3))
 
         self.shader = pi3d.Shader("uv_light")
         flatshader = pi3d.Shader("uv_flat")
-        self.scenes  = []
+        self.scenes  = {}
         self.scene = 0
         self.scale = 2.
         self.xloc = 1.0
         self.yloc = 1.0
+        self.zloc = 15.0
         self.rotationX = 0.0
         self.rotationY = 0.0
         self.rotationZ = 0.0
         self.vrcamxloc = 1.0
         self.vrcamyloc = 1.0
 
-    def loadObjectInScene(self,filename,scenenumber):
+    def loadObjectInScene(self,filename,sceneID):
 	model  = pi3d.Model(file_string=filename, x=0, y=-1, z=-40, sx=2., sy=2., sz=2.)
         model.set_shader(self.shader)
-        self.scenes[scenenumber].append(model)
+	model.position(self.xloc,self.yloc, self.zloc)
+	model.scale(self.scale,self.scale,self.scale)
+	model.rotateToX(self.rotationX)
+	model.rotateToY(self.rotationY)
+	model.rotateToZ(self.rotationZ)
+        self.scenes.update({sceneID : model})
+
+	print "loaded "+ filename + " in "+ sceneID
+
+    def removeScene(self,sceneID):
+	del self.scenes[sceneID]
+
+    def setScene(self,sceneID):
+        self.scene = sceneID
+	print "switch to scene: "+sceneID
 
     def posX(self, x):
         self.xloc = x
         for o in self.scenes:	
-		o.position(self.xloc,self.yloc, 15.0)
+		self.scenes[o].position(self.xloc,self.yloc, self.zloc)
 
     def posY(self,y):
         self.yloc = y	
         for o in self.scenes:	
-		o.position(self.xloc, self.yloc, 15.0)
+		self.scenes[o].position(self.xloc, self.yloc, self.zloc)
+
+    def posZ(self,z):
+        self.zloc = z	
+        for o in self.scenes:	
+		self.scenes[o].position(self.xloc, self.yloc, self.zloc)
 
     def cameraX(self,x):
         self.vrcamxloc = x
@@ -55,28 +75,27 @@ class EA3D:
     def rotX(self,x):
         self.rotationX = x	
         for o in self.scenes:	
-	  	o.rotateIncX(self.rotationX*0.001)
+	  	self.scenes[o].rotateToX(x)
 
     def rotY(self,y):
         self.rotationY = y
         for o in self.scenes:	
-	  	o.rotateIncY((self.rotationY)*0.0012)
+	  	self.scenes[o].rotateToY(y)
 
     def rotZ(self,z):
         self.rotationZ = z
         for o in self.scenes:	
-		o.rotateIncZ((z)*0.00132)
+		self.scenes[o].rotateToZ(z)
 
     def setScale(self,s):
         self.scale = s	
         for o in self.scenes:	
-		o.scale(self.scale,self.scale,self.scale)
+		self.scenes[o].scale(self.scale,self.scale,self.scale)
 
 
-    def setScene(self,s):
-        self.scene = s
         
     def setBackground(self,r,g,b,a):
+        #self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (self.backgroundRed,self.backgroundGreen, self.backgroundBlue, self.backgroundAlpha))
 	self.DISPLAY.set_background(r,g,b,a)
 	#print "set background to "+ str(r) + " "+str(g)+ " "+str(b)+" "+str(a) 
 
@@ -88,6 +107,9 @@ class EA3D:
             elif stuff[0] == "posY":
                 if isinstance(stuff[1],float):
                     self.posY(stuff[1])
+            elif stuff[0] == "posZ":
+                if isinstance(stuff[1],float):
+                    self.posZ(stuff[1])
             elif stuff[0] == "rotationX":
                 if isinstance(stuff[1],float):
                     self.rotX(stuff[1])
@@ -116,9 +138,9 @@ class EA3D:
                 if isinstance(stuff[1],float):
 		    self.backgroundAlpha = stuff[1]
                     self.setBackground(self.backgroundRed, self.backgroundGreen, self.backgroundBlue, self.backgroundAlpha)
-	    elif stuff[0] == "loadmodel":
+	    elif stuff[0] == "loadModel":
 		if isinstance(stuff[1],basestring):
-			if isinstance(stuff[2],int):
+			if isinstance(stuff[2],basestring):
 				self.loadObjectInScene(stuff[1],stuff[2])
 
             elif stuff[0] == "camera":
@@ -130,5 +152,9 @@ class EA3D:
                         if isinstance(stuff[2],float):
                             self.cameraY(stuff[2])
             elif stuff[0] == "scene":
-                if isinstance(stuff[1],int):
-                    self.setScene(stuff[1])
+                 self.setScene(stuff[1])
+
+            elif stuff[0] == "removeScene":
+                 self.removeScene(stuff[1])
+	    else: 
+		print "unhandled command:" + stuff[0]

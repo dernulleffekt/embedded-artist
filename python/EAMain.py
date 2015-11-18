@@ -98,13 +98,9 @@ st.start()
 try :
     while graphics.DISPLAY.loop_running():
 	graphics.DISPLAY.clear()
-	if len(graphics.scenes)>graphics.scene:
-  		for o in graphics.scenes[graphics.scene]:	
-			o.draw()
-  			o.rotateIncX((graphics.rotationX)*0.01)
-			o.rotateIncY((graphics.rotationY)*0.12)
-			o.rotateIncZ((graphics.rotationZ)*0.02)
-			o.position(graphics.xloc, graphics.yloc, 15.0)
+	if graphics.scene in graphics.scenes:
+  		o = graphics.scenes[graphics.scene]
+		o.draw()
 
 	time.sleep(0.01)	
 except KeyboardInterrupt :
