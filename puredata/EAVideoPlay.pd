@@ -1,12 +1,11 @@
-#N canvas 290 231 513 367 10;
+#N canvas 276 298 513 367 10;
 #X obj 85 328 outlet;
 #X obj 6 6 cnv 15 100 200 empty empty empty 20 12 0 14 -203904 -66577
 0;
-#X obj 71 15 vradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
+#X obj 71 15 vradio 15 1 1 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 2;
 #X obj 182 47 select 0 1 2 3 4 5;
-#X text 38 14 Video 1;
-#X text 74 28 2;
+#X text 38 15 Video 1;
 #X text 38 28 play;
 #X obj 11 61 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113 -1
 -1;
@@ -20,24 +19,35 @@
 ;
 #X text 29 165 speed;
 #X obj 116 -4 inlet;
-#X msg 198 78 send /video play /home/pi/fat32/video2.mp4;
-#X msg 182 100 send /video play /home/pi/fat32/video1.mp4;
+#X msg 175 139 send /video play /home/pi/fat32/video2.mp4;
+#X msg 159 161 send /video play /home/pi/fat32/video1.mp4;
 #X msg 154 277 send /video faster;
 #X msg 56 216 send /video stop;
 #X msg 58 243 send /video pause;
 #X msg 11 273 send /video slower;
+#X obj 167 0 inlet;
+#X msg 202 112 send /video play /home/pi/fat32/video3.mp4;
+#X msg 218 90 send /video play /home/pi/fat32/video4.mp4;
+#X text 74 28 2;
+#X text 74 44 3;
+#X text 74 58 4;
 #X connect 2 0 3 0;
-#X connect 3 0 16 0;
-#X connect 3 1 15 0;
+#X connect 3 0 15 0;
+#X connect 3 1 14 0;
+#X connect 3 2 21 0;
+#X connect 3 3 22 0;
+#X connect 6 0 17 0;
 #X connect 7 0 18 0;
-#X connect 8 0 19 0;
-#X connect 11 0 17 0;
-#X connect 12 0 20 0;
-#X connect 14 0 2 0;
+#X connect 10 0 16 0;
+#X connect 11 0 19 0;
+#X connect 13 0 2 0;
+#X connect 14 0 0 0;
 #X connect 15 0 0 0;
 #X connect 16 0 0 0;
 #X connect 17 0 0 0;
 #X connect 18 0 0 0;
 #X connect 19 0 0 0;
-#X connect 20 0 0 0;
+#X connect 20 0 6 0;
+#X connect 21 0 0 0;
+#X connect 22 0 0 0;
 #X coords 0 -1 1 1 102 202 2 5 5;

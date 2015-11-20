@@ -14,7 +14,7 @@ import serial
 import OSC
 import time, threading
 import EANet
-import EAOsc
+#import EAOsc
 import EA3D
 # init the camera
 from EACamera import EACamera
@@ -98,15 +98,14 @@ st.start()
 try :
     while graphics.DISPLAY.loop_running():
 	graphics.DISPLAY.clear()
-	i = 1
-	if (graphics.scene < 2): # scene 2 implicit empty 
-  		for o in graphics.objects[graphics.scene]:	
+	if len(graphics.scenes)>graphics.scene:
+  		for o in graphics.scenes[graphics.scene]:	
 			o.draw()
-	  		o.rotateIncX((graphics.rotationX+i)*0.01)
-			o.rotateIncY((graphics.rotationY+i)*0.12)
-			o.rotateIncZ((graphics.rotationZ-i)*0.02)
+  			o.rotateIncX((graphics.rotationX)*0.01)
+			o.rotateIncY((graphics.rotationY)*0.12)
+			o.rotateIncZ((graphics.rotationZ)*0.02)
 			o.position(graphics.xloc, graphics.yloc, 15.0)
-			i = i + 1
+
 	time.sleep(0.01)	
 except KeyboardInterrupt :
     camera.close()
