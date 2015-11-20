@@ -1,0 +1,55 @@
+#N canvas 826 23 847 669 10;
+#X declare -lib mrpeach;
+#X declare -lib mrpeach;
+#X obj 95 371 udpsend;
+#X obj 95 406 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 15 349 disconnect;
+#X obj 95 345 packOSC;
+#X obj 48 508 import mrpeach;
+#X msg 236 407 1;
+#X msg 205 407 0;
+#X msg 267 407 2;
+#X obj 741 -18 vsl 15 240 0 8 0 0 3DScale empty empty 0 -9 0 10 -262144
+-1 -1 5900 1;
+#X obj 784 -60 bng 15 250 50 0 loadGraphicScene empty empty 17 7 0
+10 -4034 -1 -1;
+#X obj 13 -62 EAGraphic;
+#X obj 741 236 r nanoFader5;
+#X obj 741 255 * 8;
+#X msg 298 407 3;
+#X obj 251 -79 r loadGraphicScene;
+#X obj 205 424 s setGraphicScene;
+#X msg 151 349 connect 192.168.0.64 9000;
+#X msg 150 206 /3d loadModel guteMiene.obj scene1;
+#X msg 245 275 /3d scene scene1;
+#X msg 156 231 /3d loadModel dorn.obj scene2;
+#X msg 244 298 /3d scene scene2;
+#X msg 389 295 /3d removeScene scene2;
+#X obj 430 91 knob 32 32 0 360 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 1900 1;
+#X msg 407 166 /3d rotationZ \$1;
+#X obj 564 -19 vsl 15 240 0 60 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 13900 1;
+#X msg 563 231 /3d posZ \$1;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 5 0 15 0;
+#X connect 6 0 15 0;
+#X connect 7 0 15 0;
+#X connect 10 0 3 0;
+#X connect 11 0 12 0;
+#X connect 12 0 8 0;
+#X connect 13 0 15 0;
+#X connect 14 0 10 1;
+#X connect 16 0 0 0;
+#X connect 17 0 3 0;
+#X connect 18 0 3 0;
+#X connect 19 0 3 0;
+#X connect 20 0 3 0;
+#X connect 21 0 3 0;
+#X connect 22 0 23 0;
+#X connect 23 0 3 0;
+#X connect 24 0 25 0;
+#X connect 25 0 3 0;
