@@ -31,7 +31,7 @@ video = EAVideo()
 graphics = EA3D()
 
 ### Arduino
-UART = serial.Serial("/dev/ttyAMA0", baudrate=9600)
+#UART = serial.Serial("/dev/ttyAMA0", baudrate=9600)
 
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
