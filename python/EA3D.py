@@ -5,9 +5,9 @@ class EA3D:
         self.backgroundRed = 0.0
 	self.backgroundGreen = 0.0 
 	self.backgroundBlue = 0.0
-        self.backgroundAlpha = 1.0
+        self.backgroundAlpha = .3
 
-        self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, 1.0))
+        self.DISPLAY = pi3d.Display.create(frames_per_second = 25,background = (0.0, 0.0, 0.0, .3))
         mylight = pi3d.Light(lightpos=(-2.0, -1.0, 10.0), lightcol=(1.0, 1.0, 0.8), lightamb=(0.25, 0.2, 0.3))
 
         self.shader = pi3d.Shader("uv_light")

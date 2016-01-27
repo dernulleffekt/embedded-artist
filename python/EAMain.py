@@ -18,14 +18,11 @@ import EANet
 import EA3D
 # init the camera
 from EACamera import EACamera
-from EAVideo import EAVideo
 from EA3D import EA3D
 
 camera = EACamera()
 camera.setAlpha(64)
 camera.setFrame(100,100,640,480)
-
-video = EAVideo()
 
 # setting up the 3d graphics
 graphics = EA3D()
@@ -35,7 +32,7 @@ graphics = EA3D()
 
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
-receive_address = EANet.get_interface_ip("eth0:1"), 9000
+receive_address = EANet.get_interface_ip("eth0"), 9000
 print "OSC going to listen on %s" % receive_address[0]
 
 # OSC Server. there are three different types of server. 
@@ -66,8 +63,6 @@ def printing_handler(addr, tags, stuff, source):
     print "data %s" % stuff
 
 # define a message-handler function for the server to call.
-	
-
     
 # this registers a 'default' handler (for unmatched messages), 
 # an /'error' handler, an '/info' handler.
@@ -81,12 +76,12 @@ s.addMsgHandler("/3d", graphics.oscHandler) # adding our function
 
 s.addMsgHandler("/camera", camera.oscHandler) # adding our function
 
-s.addMsgHandler("/video", video.oscHandler) # adding our function
-
 # just checking which handlers we have added
 print "Registered Callback-functions are :"
 for addr in s.getOSCAddressSpace():
     print addr
+
+camera.start()
 
 
 # Start OSCServer
@@ -101,11 +96,10 @@ try :
 	if graphics.scene in graphics.scenes:
   		o = graphics.scenes[graphics.scene]
 		o.draw()
-
+	camera.processFrame()
 	time.sleep(0.01)	
 except KeyboardInterrupt :
     camera.close()
-    video.close()
     print "\nClosing OSCServer."
     s.close()
     print "Waiting for Server-thread to finish"
