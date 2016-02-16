@@ -1,6 +1,7 @@
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import picamera
+import multiprocessing
 import time
 import cv2
 import numpy as np
@@ -8,6 +9,11 @@ import OSC
 
 class EACamera:
 	# opencv functions
+	def test(self):
+		while (1==1):
+			print "test"
+			time.sleep(1)
+
 
 	def nothing(self,*arg, **kw):
     		pass
@@ -61,6 +67,7 @@ class EACamera:
                 print "start camera"
 		if (self.camera == None):# initialize the camera to given values
 			self.camera = picamera.PiCamera()
+			self.camera.resolution = (self.width,self.height)
 			self.camera.start_preview()
 			self.camera.framerate = self.framerate
 			self.camera.preview_fullscreen = self.fullscreen
@@ -75,69 +82,78 @@ class EACamera:
 			# initialize OSC
 			#self.client = OSC.OSCClient()
 			#self.client.connect( ('127.0.0.1', 9000) ) # note that the argument is a tupple and not two arguments
-			self.rawCapture = PiRGBArray(self.camera)
 			self.initialGrab = True
 
 		else:
 			self.camera.start_preview()
-	
+
 	def processFrame(self):
-		self.camera.capture(self.rawCapture, format = "bgr", use_video_port=True)
-		image = self.rawCapture.array
-		if self.initialGrab:
-			self.h, self.w = image.shape[:2]
-			self.prev_frame = image.copy()
-    			self.motion_history = np.zeros((self.h, self.w), np.float32)
-    			hsv = np.zeros((self.h, self.w, 3), np.uint8)
-    			hsv[:,:,1] = 255
-			self.initialGrab = False
-        		self.rawCapture.truncate(0)
-   		else:
-			frame_diff = cv2.absdiff(image, self.prev_frame)
-			self.prev_frame = image.copy()
-        		gray_diff = cv2.cvtColor(frame_diff, cv2.COLOR_BGR2GRAY)
-			ret, motion_mask = cv2.threshold(gray_diff, self.thrs, 1, cv2.THRESH_BINARY)
-			self.timestamp = self.clock()
-        		cv2.updateMotionHistory(motion_mask, self.motion_history, self.timestamp, self.MHI_DURATION)
-        		mg_mask, mg_orient = cv2.calcMotionGradient( self.motion_history, self.MAX_TIME_DELTA, self.MIN_TIME_DELTA, apertureSize=5 )
-        		seg_mask, seg_bounds = cv2.segmentMotion(self.motion_history, self.timestamp, self.MAX_TIME_DELTA)
+		time.sleep(2)
+		print "start frame processing"
+		self.rawCapture = PiRGBArray(self.camera)
+		while (self.camera != None):
+		 #for frame in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
+			print "a frame"
 
-			for i, rect in enumerate([(0, 0, self.w, self.h)] + list(seg_bounds)):
-            			x, y, rw, rh = rect
-            			area = rw*rh
-            			if area < 16**2:#64
-                			continue
-            			silh_roi   = motion_mask   [y:y+rh,x:x+rw]
-            			orient_roi = mg_orient     [y:y+rh,x:x+rw]
-            			mask_roi   = mg_mask       [y:y+rh,x:x+rw]
-            			mhi_roi    = self.motion_history[y:y+rh,x:x+rw]
-            			if cv2.norm(silh_roi, cv2.NORM_L1) < area*0.05:
-                			continue
-            			angle = cv2.calcGlobalOrientation(orient_roi, mask_roi, mhi_roi, self.timestamp, self.MHI_DURATION)
-            			#color = ((255, 0, 0), (0, 0, 255))[i == 0]
-            			#draw_motion_comp(image, rect, angle, color)
-	    			if i>0 and i < 5: 
-					address = "/CV"+str(i)
-					#msg = OSC.OSCMessage() #  we reuse the same variable msg used above overwriting it
-					#msg.setAddress(address)
-					if isinstance(x, np.generic):
-    						value = np.asscalar(x)
-					else:
-						value = x
-					#msg.append(value)
-					#client.send(msg) # now we dont need to tell the client the address anymore
-					print "%s %s" % (address , value)
-
-        			# show the frame
-				#cv2.flip(image,0,image)
-        			#cv2.imshow('EArtist', image)
-        			#cv2.imshow('motempl', gray_diff)
-
-        			#key = cv2.waitKey(1) & 0xFF
-
-        			# clear the stream in preparation for the next frame
+			self.camera.capture(self.rawCapture, format = "bgr", use_video_port=True )
+			image = self.rawCapture.array
+			if self.initialGrab:
+				self.h, self.w = image.shape[:2]
+				self.prev_frame = image.copy()
+    				self.motion_history = np.zeros((self.h, self.w), np.float32)
+    				hsv = np.zeros((self.h, self.w, 3), np.uint8)
+    				hsv[:,:,1] = 255
+				self.initialGrab = False
         			self.rawCapture.truncate(0)
+   			else:
+				frame_diff = cv2.absdiff(image, self.prev_frame)
+				self.prev_frame = image.copy()
+        			gray_diff = cv2.cvtColor(frame_diff, cv2.COLOR_BGR2GRAY)
+				ret, motion_mask = cv2.threshold(gray_diff, self.thrs, 1, cv2.THRESH_BINARY)
+				self.timestamp = self.clock()
+        			cv2.updateMotionHistory(motion_mask, self.motion_history, self.timestamp, self.MHI_DURATION)
+        			mg_mask, mg_orient = cv2.calcMotionGradient( self.motion_history, self.MAX_TIME_DELTA, self.MIN_TIME_DELTA, apertureSize=5 )
+        			seg_mask, seg_bounds = cv2.segmentMotion(self.motion_history, self.timestamp, self.MAX_TIME_DELTA)
 
+				for i, rect in enumerate([(0, 0, self.w, self.h)] + list(seg_bounds)):
+            				x, y, rw, rh = rect
+            				area = rw*rh
+            				if area < 16**2:#64
+                				continue
+            				silh_roi   = motion_mask   [y:y+rh,x:x+rw]
+            				orient_roi = mg_orient     [y:y+rh,x:x+rw]
+            				mask_roi   = mg_mask       [y:y+rh,x:x+rw]
+            				mhi_roi    = self.motion_history[y:y+rh,x:x+rw]
+            				if cv2.norm(silh_roi, cv2.NORM_L1) < area*0.05:
+                				continue
+            				angle = cv2.calcGlobalOrientation(orient_roi, mask_roi, mhi_roi, self.timestamp, self.MHI_DURATION)
+            				#color = ((255, 0, 0), (0, 0, 255))[i == 0]
+            				#draw_motion_comp(image, rect, angle, color)
+	    				if i>0 and i < 5: 
+						address = "/CV"+str(i)
+						#msg = OSC.OSCMessage() #  we reuse the same variable msg used above overwriting it
+						#msg.setAddress(address)
+						if isinstance(x, np.generic):
+    							value = np.asscalar(x)
+						else:
+							value = x
+						#msg.append(value)
+						#client.send(msg) # now we dont need to tell the client the address anymore
+						print "%s %s" % (address , value)
+
+        				# show the frame
+					#cv2.flip(image,0,image)
+        				#cv2.imshow('EArtist', image)
+        				#cv2.imshow('motempl', gray_diff)
+
+        				#key = cv2.waitKey(1) & 0xFF
+
+        				# clear the stream in preparation for the next frame
+       				self.rawCapture.truncate(0)
+			if (self.camera == None):
+				break;
+			print "restart or end processing frame"
+		print "done with process frame"
 
 
 

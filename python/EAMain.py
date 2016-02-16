@@ -16,6 +16,7 @@ import time, threading
 import EANet
 #import EAOsc
 import EA3D
+import multiprocessing
 # init the camera
 from EACamera import EACamera
 from EA3D import EA3D
@@ -23,6 +24,12 @@ from EA3D import EA3D
 camera = EACamera()
 camera.setAlpha(64)
 camera.setFrame(100,100,640,480)
+
+def cameraProcess():
+	camera.start();
+	camera.processFrame();
+	
+	return
 
 # setting up the 3d graphics
 graphics = EA3D()
@@ -32,7 +39,7 @@ graphics = EA3D()
 
 # tupple with ip, port. i dont use the () but maybe you want -> send_address = ('127.0.0.1', 9000)
 # ip address of the raspi, localhost wouldn't work, because, well, its local
-receive_address = EANet.get_interface_ip("eth0"), 9000
+receive_address = EANet.get_interface_ip("eth0"), 9000 #wlan0
 print "OSC going to listen on %s" % receive_address[0]
 
 # OSC Server. there are three different types of server. 
@@ -81,8 +88,9 @@ print "Registered Callback-functions are :"
 for addr in s.getOSCAddressSpace():
     print addr
 
-camera.start()
-
+#camera.start()
+cameratask = multiprocessing.Process(target= cameraProcess)
+cameratask.start()
 
 # Start OSCServer
 print "\nStarting OSCServer. Use ctrl-C to quit."
@@ -96,9 +104,10 @@ try :
 	if graphics.scene in graphics.scenes:
   		o = graphics.scenes[graphics.scene]
 		o.draw()
-	camera.processFrame()
+	#camera.processFrame();
 	time.sleep(0.01)	
 except KeyboardInterrupt :
+    cameratask.join()
     camera.close()
     print "\nClosing OSCServer."
     s.close()
