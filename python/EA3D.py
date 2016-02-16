@@ -41,7 +41,7 @@ class EA3D:
 
     def setScene(self,sceneID):
         self.scene = sceneID
-	print "switch to scene: "+sceneID
+	print "switch to scene: "+ str(sceneID)
 
     def posX(self, x):
         self.xloc = x
