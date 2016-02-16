@@ -34,14 +34,14 @@ class EA3D:
 	model.rotateToZ(self.rotationZ)
         self.scenes.update({sceneID : model})
 
-	print "loaded "+ filename + " in "+ sceneID
+	print "loaded "+ filename + " in "+ str(sceneID)
 
     def removeScene(self,sceneID):
 	del self.scenes[sceneID]
 
     def setScene(self,sceneID):
         self.scene = sceneID
-	print "switch to scene: "+sceneID
+	print "switch to scene: "+str(sceneID)
 
     def posX(self, x):
         self.xloc = x

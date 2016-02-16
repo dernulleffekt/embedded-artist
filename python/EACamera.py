@@ -9,11 +9,6 @@ import OSC
 
 class EACamera:
 	# opencv functions
-	def test(self):
-		while (1==1):
-			print "test"
-			time.sleep(1)
-
 
 	def nothing(self,*arg, **kw):
     		pass
